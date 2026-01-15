@@ -7,21 +7,28 @@
     <title>niro.digital</title>
 
     <style>
-      :root { --hero-min-height: 100vh; }
+      :root {
+        --hero-min-height: 100vh;
+        --gold: #d6b25c;
+      }
 
       body {
         margin: 0;
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #07192f; /* fallback */
+        color: white;
       }
 
+      /* HERO */
       .hero {
         position: relative;
         min-height: var(--hero-min-height);
+        overflow: hidden;
         display: grid;
         place-items: center;
-        overflow: hidden;
       }
 
+      /* Canvas Vanta SOLO hero */
       #hero-vanta {
         position: absolute;
         inset: 0;
@@ -30,128 +37,19 @@
         z-index: 0;
       }
 
-      .hero-content {
+      /* Overlay per leggibilità */
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(closest-side, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.72));
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* Layout contenuti: top (servizi + logo), bottom (headline) */
+      .hero-inner {
         position: relative;
         z-index: 1;
-        padding: 48px 20px;
-        max-width: 980px;
-        width: 100%;
-        text-align: center;
-        color: white;
-      }
-
-      /* ✅ LOGO */
-      .brand-logo {
-        width: clamp(220px, 38vw, 520px);
-        height: auto;
-        display: block;
-        margin: 0 auto 18px;
-        filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.55));
-      }
-
-      .hero-content p {
-        margin: 0 auto;
-        max-width: 60ch;
-        font-size: clamp(1rem, 1.5vw, 1.2rem);
-        opacity: 0.9;
-      }
-
-      .hero-actions {
-        margin-top: 24px;
-        display: flex;
-        gap: 12px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        border: 0;
-        border-radius: 999px;
-        padding: 12px 18px;
-        cursor: pointer;
-        font-weight: 600;
-      }
-
-      .btn-primary { background: rgba(255, 255, 255, 0.92); }
-      .btn-ghost { background: rgba(255, 255, 255, 0.14); color: white; outline: 1px solid rgba(255, 255, 255, 0.25); }
-
-      section {
-        padding: 72px 20px;
-        max-width: 980px;
-        margin: 0 auto;
-      }
-
-      .panel {
-        border-radius: 20px;
-        padding: 24px;
-        background: #0b1220;
-        color: #e8eefc;
-      }
-    </style>
-  </head>
-
-  <body>
-    <header class="hero">
-      <div id="hero-vanta" aria-hidden="true"></div>
-
-      <div class="hero-content">
-        <!-- ✅ metti il logo qui (assicurati che il file esista nel repo) -->
-        <img
-          class="brand-logo"
-          src="assets/logo.png"
-          alt="niro.digital"
-          width="520"
-          height="260"
-          decoding="async"
-        />
-
-        <p>Sfondo animato solo qui nella hero. Sotto la pagina torna “normale”.</p>
-
-        <div class="hero-actions">
-          <button class="btn btn-primary" onclick="document.querySelector('#about')?.scrollIntoView({behavior:'smooth'})">
-            Scopri di più
-          </button>
-          <button class="btn btn-ghost" onclick="alert('Ciao!')">Contattami</button>
-        </div>
-      </div>
-    </header>
-
-    <section id="about">
-      <div class="panel">
-        <h2>Sezione normale</h2>
-        <p>Qui NON c’è Vanta (più leggero e pulito).</p>
-      </div>
-    </section>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        VANTA.BIRDS({
-          el: "#hero-vanta",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-
-          backgroundColor: 0x07192f,
-          backgroundAlpha: 1,
-          color1: 0xff0000,
-          color2: 0x00d1ff,
-          colorMode: "varianceGradient",
-          quantity: 5,
-          birdSize: 1,
-          wingSpan: 30,
-          speedLimit: 5,
-          separation: 20,
-          alignment: 20,
-          cohesion: 20,
-        });
-      });
-    </script>
-  </body>
-</html>
+        width: min(1100px, calc(100% - 40px));
+        min-height: v
