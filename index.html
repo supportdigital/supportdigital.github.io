@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>niro.digital — High-End Digital Engineering</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>niro.digital – High-End Digital Engineering</title>
 
 <style>
 html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
   height: 100%;
+  background: #020b1a;
   overflow: hidden;
-  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont;
-  background: radial-gradient(circle at center, #0b1a33 0%, #050b18 70%);
-  color: #d6b56c;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 /* HERO */
@@ -22,99 +20,108 @@ html, body {
   position: relative;
   width: 100%;
   height: 100vh;
+  background: radial-gradient(circle at top, #081a3a, #020b1a);
 }
 
-/* TESTO TOP */
+/* TESTI */
 .top-text {
   position: absolute;
   top: 40px;
   width: 100%;
   text-align: center;
-  font-size: 14px;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: #d6b56c;
-  z-index: 5;
+  letter-spacing: 4px;
+  font-weight: 600;
+  color: #d8b36a;
+  z-index: 6;
 }
 
-/* SATURNO */
-.saturn {
-  position: absolute;
-  width: 70%;
-  max-width: 950px;
-  left: 50%;
-  top: 52%;
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  animation: planet-spin 180s linear infinite;
-  pointer-events: none;
-}
-
-/* ANELLI (pseudo-layer) */
-.saturn::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("saturn.png") center / contain no-repeat;
-  animation: rings-spin 90s linear infinite reverse;
-  opacity: 0.9;
-}
-
-/* LOGO */
-.logo {
-  position: absolute;
-  left: 50%;
-  top: 52%;
-  transform: translate(-50%, -50%);
-  width: 420px;
-  z-index: 4;
-  filter: drop-shadow(0 0 22px rgba(0,0,0,0.75));
-}
-
-/* TESTO BOTTOM */
 .bottom-text {
   position: absolute;
-  bottom: 90px;
+  bottom: 80px;
   width: 100%;
   text-align: center;
   font-size: 18px;
   letter-spacing: 2px;
-  color: #d6b56c;
-  z-index: 5;
+  color: #d8b36a;
+  z-index: 6;
 }
 
-/* SCROLL */
 .scroll {
   position: absolute;
-  bottom: 40px;
+  bottom: 35px;
   width: 100%;
   text-align: center;
   font-size: 12px;
   letter-spacing: 4px;
-  opacity: 0.7;
+  color: #aaa;
+  z-index: 6;
 }
 
-/* ANIMAZIONI */
-@keyframes planet-spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
+/* SFONDO SPAZIO (FERMO) */
+.space-bg {
+  position: absolute;
+  inset: 0;
+  background: url("saturn.png") center / cover no-repeat;
+  z-index: 1;
 }
 
-@keyframes rings-spin {
+/* CONTENITORE PIANETA */
+.planet-wrapper {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+/* PIANETA CHE GIRA */
+.planet {
+  width: 58vmin;
+  animation: spin 180s linear infinite;
+  filter: drop-shadow(0 35px 70px rgba(0,0,0,0.75));
+}
+
+/* OMBRA PER PROFONDITÀ */
+.planet-shadow {
+  position: absolute;
+  width: 58vmin;
+  height: 58vmin;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 30% 50%,
+    rgba(0,0,0,0) 35%,
+    rgba(0,0,0,0.6) 72%
+  );
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* LOGO FERMO – ENORME */
+.logo {
+  position: absolute;
+  width: 34vmin;
+  z-index: 5;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8));
+}
+
+/* ANIMAZIONE */
+@keyframes spin {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
-  .saturn {
-    width: 90%;
+  .planet {
+    width: 70vmin;
+  }
+  .planet-shadow {
+    width: 70vmin;
+    height: 70vmin;
   }
   .logo {
-    width: 300px;
-  }
-  .bottom-text {
-    font-size: 16px;
+    width: 48vmin;
   }
 }
 </style>
@@ -128,9 +135,15 @@ html, body {
     WEB • MOBILE • SEO • SAAS
   </div>
 
-  <img src="saturn.png" alt="Saturn" class="saturn">
+  <div class="space-bg"></div>
 
-  <img src="logo-removebg-preview.png" alt="niro.digital" class="logo">
+  <div class="planet-wrapper">
+    <img src="saturn.png" class="planet" alt="Saturn">
+    <div class="planet-shadow"></div>
+  </div>
+
+  <!-- LOGO TRASPARENTE -->
+  <img src="logo-removebg-preview.png" class="logo" alt="niro.digital">
 
   <div class="bottom-text">
     High-End Digital Engineering
