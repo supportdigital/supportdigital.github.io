@@ -7,25 +7,23 @@
     <title>niro.digital</title>
 
     <style>
-      :root {
-        --hero-min-height: 100vh;
-      }
+      :root { --hero-min-height: 100vh; }
 
       body {
         margin: 0;
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #07192f; /* fallback se Vanta non parte */
+        color: white;
       }
 
-      /* HERO */
       .hero {
         position: relative;
         min-height: var(--hero-min-height);
         display: grid;
         place-items: center;
-        overflow: hidden; /* important: nasconde canvas in eccesso */
+        overflow: hidden;
       }
 
-      /* Contenitore Vanta SOLO hero */
       #hero-vanta {
         position: absolute;
         inset: 0;
@@ -41,7 +39,6 @@
         max-width: 980px;
         width: 100%;
         text-align: center;
-        color: white;
       }
 
       .hero-content h1 {
@@ -73,56 +70,25 @@
         font-weight: 600;
       }
 
-      .btn-primary {
-        background: rgba(255, 255, 255, 0.92);
-      }
+      .btn-primary { background: rgba(255, 255, 255, 0.92); }
+      .btn-ghost { background: rgba(255, 255, 255, 0.14); color: white; outline: 1px solid rgba(255, 255, 255, 0.25); }
 
-      .btn-ghost {
-        background: rgba(255, 255, 255, 0.14);
-        color: white;
-        outline: 1px solid rgba(255, 255, 255, 0.25);
-      }
-
-      /* Sezioni successive (esempio) */
       section {
         padding: 72px 20px;
         max-width: 980px;
         margin: 0 auto;
+        color: #e8eefc;
       }
 
       .panel {
         border-radius: 20px;
         padding: 24px;
         background: #0b1220;
-        color: #e8eefc;
-      }
-
-      /* ESEMPIO: altra sezione con altro Vanta (solo se vuoi) */
-      .vanta-section {
-        position: relative;
-        overflow: hidden;
-        border-radius: 20px;
-        min-height: 360px;
-      }
-
-      #section2-vanta {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-      }
-
-      .vanta-section .content {
-        position: relative;
-        z-index: 1;
-        padding: 28px;
       }
     </style>
   </head>
 
   <body>
-    <!-- HERO -->
     <header class="hero">
       <div id="hero-vanta" aria-hidden="true"></div>
 
@@ -134,51 +100,36 @@
           <button class="btn btn-primary" onclick="document.querySelector('#about')?.scrollIntoView({behavior:'smooth'})">
             Scopri di più
           </button>
-          <button class="btn btn-ghost" onclick="alert('Ciao!')">Contattami</button>
+          <button class="btn btn-ghost" onclick="location.href='mailto:ciao@niro.digital'">
+            Contattami
+          </button>
         </div>
       </div>
     </header>
 
-    <!-- Contenuto normale -->
     <section id="about">
       <div class="panel">
         <h2>Sezione normale</h2>
-        <p>Qui NON c’è Vanta (più leggero e pulito).</p>
+        <p>Qui sotto non c’è Vanta.</p>
       </div>
     </section>
 
-    <!-- ESEMPIO: altra sezione con altro sfondo animato (opzionale) -->
-    <section>
-      <div class="vanta-section">
-        <div id="section2-vanta" aria-hidden="true"></div>
-        <div class="content">
-          <h2>Seconda sezione (opzionale)</h2>
-          <p>
-            Puoi mettere un altro sfondo animato qui. Consiglio: attivalo solo quando la sezione è visibile.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Librerie (sempre a fine pagina) -->
+    <!-- Scripts: prima THREE, poi VANTA -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-    <!-- Se vuoi un altro effetto, aggiungi anche il relativo script, es:
-         <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-         <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
-      -->
 
     <script>
-      /**
-       * Manteniamo 0/1 istanze attive per sezione, con cleanup.
-       */
-      const vantaInstances = new Map();
+      document.addEventListener("DOMContentLoaded", () => {
+        const el = document.querySelector("#hero-vanta");
+        if (!el || !window.THREE || !window.VANTA?.BIRDS) {
+          console.warn("Vanta/Three non caricati. Rimane il fallback.");
+          return;
+        }
 
-      function initHeroVanta() {
-        if (vantaInstances.has("hero")) return;
+        window.__heroVanta?.destroy?.();
 
-        const instance = VANTA.BIRDS({
-          el: "#hero-vanta",
+        window.__heroVanta = window.VANTA.BIRDS({
+          el,
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
@@ -200,73 +151,6 @@
           alignment: 20,
           cohesion: 20,
         });
-
-        vantaInstances.set("hero", instance);
-      }
-
-      function destroyHeroVanta() {
-        const instance = vantaInstances.get("hero");
-        if (!instance) return;
-        instance.destroy();
-        vantaInstances.delete("hero");
-      }
-
-      // ESEMPIO: seconda sezione con un altro effetto (qui uso ancora BIRDS per demo)
-      function initSection2Vanta() {
-        if (vantaInstances.has("section2")) return;
-
-        const instance = VANTA.BIRDS({
-          el: "#section2-vanta",
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          backgroundColor: 0x050914,
-          color1: 0xffffff,
-          color2: 0x7aa2ff,
-          quantity: 3,
-          birdSize: 0.8,
-          wingSpan: 24,
-          speedLimit: 4,
-        });
-
-        vantaInstances.set("section2", instance);
-      }
-
-      function destroySection2Vanta() {
-        const instance = vantaInstances.get("section2");
-        if (!instance) return;
-        instance.destroy();
-        vantaInstances.delete("section2");
-      }
-
-      /**
-       * Consigliato: attiva solo quando visibile.
-       * Se vuoi tenerli sempre accesi, puoi chiamare direttamente init* senza observer.
-       */
-      function setupVisibilityActivation() {
-        const heroEl = document.querySelector(".hero");
-        const section2El = document.querySelector(".vanta-section");
-
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (entry.target === heroEl) {
-                entry.isIntersecting ? initHeroVanta() : destroyHeroVanta();
-              }
-              if (entry.target === section2El) {
-                entry.isIntersecting ? initSection2Vanta() : destroySection2Vanta();
-              }
-            }
-          },
-          { threshold: 0.15 }
-        );
-
-        if (heroEl) io.observe(heroEl);
-        if (section2El) io.observe(section2El);
-      }
-
-      document.addEventListener("DOMContentLoaded", () => {
-        setupVisibilityActivation();
       });
     </script>
   </body>
