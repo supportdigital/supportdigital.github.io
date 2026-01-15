@@ -1,139 +1,145 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>niro.digital – High-End Digital Engineering</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>niro.digital – High-End Digital Engineering</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
+:root{
+  --bg:#061a33;
+  --blue1:#0a2e5c;
+  --blue2:#0fb9ff;
+  --gold:#d6b46a;
+}
 
-    body {
-      height: 100vh;
-      background: radial-gradient(circle at top, #0a1e3f, #040b1a 70%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #d6b46a;
-      overflow: hidden;
-    }
+*{box-sizing:border-box;margin:0;padding:0}
 
-    .hero {
-      position: relative;
-      width: 90vmin;
-      height: 90vmin;
-      max-width: 520px;
-      max-height: 520px;
-    }
+body{
+  background:radial-gradient(circle at top,var(--blue2),var(--bg));
+  font-family:system-ui,Segoe UI,Arial,sans-serif;
+  color:white;
+  overflow-x:hidden;
+}
 
-    /* ===== PLANET ===== */
-    .planet {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle at 30% 30%,
-        #4fc3ff,
-        #1b5fbf 55%,
-        #0a2a5e 75%
-      );
-      animation: breathe 7s ease-in-out infinite;
-      z-index: 5;
-    }
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  padding:40px 20px;
+  text-align:center;
+}
 
-    @keyframes breathe {
-      0%,100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
+/* TOP TEXT */
+.top{
+  font-weight:600;
+  letter-spacing:4px;
+  color:var(--gold);
+}
 
-    /* ===== RINGS (3D FAKE) ===== */
-    .ring {
-      position: absolute;
-      inset: -12%;
-      border-radius: 50%;
-      border: 2px solid rgba(120,180,255,0.35);
-      transform: rotateX(70deg);
-      filter: blur(0.4px);
-      z-index: 2;
-    }
+/* PLANET */
+.planet-wrap{
+  position:relative;
+  width:min(70vw,520px);
+  aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-    .ring.second {
-      inset: -22%;
-      opacity: 0.2;
-      transform: rotateX(78deg);
-    }
+/* PLANET CORE */
+.planet{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 30%,#18e0ff,#0a5db8 55%,#062b55 75%);
+  animation:breath 6s ease-in-out infinite;
+  box-shadow:
+    0 0 80px rgba(15,185,255,.35),
+    inset -40px -40px 80px rgba(0,0,0,.35);
+}
 
-    /* ===== LOGO ===== */
-    .logo {
-      position: absolute;
-      width: 75%;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
-      text-align: center;
-    }
+/* RINGS (pseudo 3D) */
+.ring{
+  position:absolute;
+  width:130%;
+  height:28%;
+  border-radius:50%;
+  border:2px solid rgba(15,185,255,.25);
+  transform:rotate(-12deg);
+  animation:ring 14s linear infinite;
+}
 
-    .logo img {
-      width: 100%;
-      height: auto;
-    }
+.ring:nth-child(2){
+  width:160%;
+  height:36%;
+  border-color:rgba(214,180,106,.25);
+  animation-duration:22s;
+}
 
-    /* ===== TEXT ===== */
-    .top-text {
-      position: absolute;
-      top: -42px;
-      width: 100%;
-      text-align: center;
-      font-size: 14px;
-      letter-spacing: 4px;
-    }
+/* LOGO */
+.logo{
+  position:relative;
+  width:85%;
+  max-width:420px;
+  z-index:3;
+  filter:drop-shadow(0 0 25px rgba(15,185,255,.5));
+}
 
-    .bottom-text {
-      position: absolute;
-      bottom: -46px;
-      width: 100%;
-      text-align: center;
-      font-size: 13px;
-      letter-spacing: 3px;
-      opacity: 0.9;
-    }
+/* BOTTOM TEXT */
+.bottom{
+  color:var(--gold);
+  letter-spacing:3px;
+  font-size:clamp(14px,2.2vw,18px);
+}
 
-    .scroll {
-      position: absolute;
-      bottom: -86px;
-      width: 100%;
-      text-align: center;
-      font-size: 11px;
-      letter-spacing: 3px;
-      opacity: 0.6;
-    }
-  </style>
+.scroll{
+  opacity:.6;
+  font-size:12px;
+  letter-spacing:3px;
+}
+
+/* ANIMATIONS */
+@keyframes breath{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.06)}
+}
+
+@keyframes ring{
+  from{transform:rotate(-12deg)}
+  to{transform:rotate(348deg)}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  .planet-wrap{width:85vw}
+  .top{font-size:13px}
+}
+</style>
 </head>
 
 <body>
-  <div class="hero">
+<section class="hero">
 
-    <div class="top-text">WEB • MOBILE • SEO • SAAS</div>
+  <div class="top">WEB • MOBILE • SEO • SAAS</div>
 
-    <div class="ring"></div>
-    <div class="ring second"></div>
-
+  <div class="planet-wrap">
     <div class="planet"></div>
+    <div class="ring"></div>
+    <div class="ring"></div>
 
-    <div class="logo">
-      <!-- SOSTITUISCI CON IL TUO LOGO -->
-      <img src="logo.png" alt="niro.digital logo">
-    </div>
-
-    <div class="bottom-text">HIGH-END DIGITAL ENGINEERING</div>
-    <div class="scroll">SCROLL</div>
-
+    <img 
+      src="logo-removebg-preview.png"
+      alt="niro.digital"
+      class="logo">
   </div>
+
+  <div class="bottom">HIGH-END DIGITAL ENGINEERING</div>
+  <div class="scroll">SCROLL</div>
+
+</section>
 </body>
 </html>
