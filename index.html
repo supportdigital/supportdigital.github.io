@@ -61,34 +61,30 @@
       );
       filter: blur(10px);
       animation: energyBreath 8.5s ease-in-out infinite;
+      z-index: 1;
     }
 
-    /* ================= HORIZON LINE ================= */
-
-    .horizon-line {
-      position: absolute;
-      width: 420px;
-      height: 2px;
-      background: linear-gradient(
-        90deg,
-        rgba(0,180,255,0) 0%,
-        rgba(0,180,255,0.8) 35%,
-        rgba(255,190,90,0.9) 50%,
-        rgba(0,180,255,0.8) 65%,
-        rgba(0,180,255,0) 100%
-      );
-      filter: blur(0.5px);
-      opacity: 0.7;
-      animation: horizonBreath 10s ease-in-out infinite;
-    }
-
-    /* ================= ORBIT ================= */
+    /* ================= ORBIT BASE ================= */
 
     .orbit {
       position: absolute;
       inset: 0;
       border-radius: 50%;
       border: 1px solid rgba(0,180,255,0.18);
+      z-index: 0;
+    }
+
+    /* ================= ORBIT ARC (ENERGY BAND) ================= */
+
+    .orbit-arc {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: rgba(0,180,255,0.9);
+      border-right-color: rgba(255,190,90,0.9);
+      filter: drop-shadow(0 0 12px rgba(255,190,90,0.45));
+      z-index: 0;
     }
 
     /* ================= LOGO ================= */
@@ -144,21 +140,6 @@
       100% { filter: drop-shadow(0 0 35px rgba(0,180,255,0.35)); }
     }
 
-    @keyframes horizonBreath {
-      0% {
-        transform: translateY(0) scaleX(0.9);
-        opacity: 0.45;
-      }
-      50% {
-        transform: translateY(-4px) scaleX(1);
-        opacity: 0.85;
-      }
-      100% {
-        transform: translateY(0) scaleX(0.9);
-        opacity: 0.45;
-      }
-    }
-
     /* ================= MOBILE ================= */
 
     @media (max-width: 768px) {
@@ -176,10 +157,6 @@
         width: 220px;
       }
 
-      .horizon-line {
-        width: 320px;
-      }
-
       .title {
         top: 40px;
         font-size: 12px;
@@ -195,8 +172,8 @@
   <div class="stage">
     <div class="logo-wrapper" id="logoWrapper">
       <div class="energy-field"></div>
-      <div class="horizon-line"></div>
       <div class="orbit"></div>
+      <div class="orbit-arc"></div>
       <img src="logo-removebg-preview.png" class="logo" alt="niro.digital logo">
     </div>
   </div>
@@ -206,10 +183,18 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // orbita continua
+    // orbita base
     gsap.to(".orbit", {
       rotation: 360,
-      duration: 36,
+      duration: 48,
+      repeat: -1,
+      ease: "none"
+    });
+
+    // arco energetico (blu ↔ oro che gira)
+    gsap.to(".orbit-arc", {
+      rotation: 360,
+      duration: 18,
       repeat: -1,
       ease: "none"
     });
@@ -225,26 +210,15 @@
       }
     });
 
-    // horizon drift con scroll
-    gsap.to(".horizon-line", {
-      y: -14,
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-
     // parallax mouse
     window.addEventListener("mousemove", e => {
-      const x = (e.clientX / innerWidth - 0.5) * 16;
-      const y = (e.clientY / innerHeight - 0.5) * 16;
+      const x = (e.clientX / innerWidth - 0.5) * 14;
+      const y = (e.clientY / innerHeight - 0.5) * 14;
 
       gsap.to("#logoWrapper", {
         x,
         y,
-        duration: 0.8,
+        duration: 0.9,
         ease: "power3.out"
       });
     });
