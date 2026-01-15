@@ -12,23 +12,23 @@
       box-sizing: border-box;
     }
 
-    body {
-      width: 100vw;
-      height: 100vh;
+    html, body {
+      width: 100%;
+      height: 100%;
       overflow: hidden;
       font-family: Arial, Helvetica, sans-serif;
-      background: #050b1a;
+      background: #000;
     }
 
-    /* SFONDO SPAZIO FERMO */
+    /* HERO */
     .hero {
       position: relative;
       width: 100%;
-      height: 100%;
-      background: url("saturn.png") center center / cover no-repeat fixed;
+      height: 100vh;
+      background: url("saturn.png") center center / cover no-repeat;
     }
 
-    /* TESTO IN ALTO */
+    /* TESTO SOPRA */
     .top-text {
       position: absolute;
       top: 30px;
@@ -37,17 +37,16 @@
       color: #d4af37;
       letter-spacing: 4px;
       font-size: 14px;
-      z-index: 5;
+      z-index: 10;
     }
 
-    /* LOGO CENTRALE */
+    /* LOGO CENTRO */
     .logo-center {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: 10;
-      text-align: center;
+      z-index: 20;
     }
 
     .logo-center img {
@@ -76,12 +75,10 @@
       font-size: 12px;
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       .logo-center img {
         width: 260px;
       }
-
       .bottom-text {
         font-size: 16px;
       }
