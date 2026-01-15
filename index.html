@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>niro.digital — High-End Digital Engineering</title>
 
   <!-- GSAP -->
@@ -41,12 +42,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      filter: drop-shadow(0 0 30px rgba(0,180,255,0.25));
+      animation: wrapperBreath 9s ease-in-out infinite;
     }
 
-    /* campo energetico */
-    .logo-wrapper::before {
-      content: "";
+    /* CAMPO ENERGETICO — CSS breathing (COME GLOBALASSET) */
+    .energy-field {
       position: absolute;
       width: 260px;
       height: 260px;
@@ -54,30 +54,30 @@
       background: radial-gradient(
         circle,
         rgba(0,180,255,0.35) 0%,
-        rgba(0,180,255,0.18) 40%,
-        rgba(0,180,255,0.08) 60%,
-        transparent 72%
+        rgba(0,180,255,0.18) 45%,
+        rgba(0,180,255,0.08) 65%,
+        transparent 75%
       );
-      filter: blur(8px);
-      z-index: 1;
+      filter: blur(10px);
+      animation: energyBreath 8.5s ease-in-out infinite;
     }
 
-    /* orbita */
+    /* ORBITA */
     .orbit {
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 1px solid rgba(0,180,255,0.25);
-      z-index: 0;
+      border: 1px solid rgba(0,180,255,0.18);
     }
 
-    /* LOGO — TRASPARENTE */
+    /* LOGO */
     .logo {
       position: relative;
       width: 290px;
       max-width: 85%;
       height: auto;
       z-index: 2;
+      animation: logoBreath 9s ease-in-out infinite;
     }
 
     /* ================= TESTI ================= */
@@ -102,6 +102,26 @@
       opacity: 0.45;
     }
 
+    /* ================= KEYFRAMES ================= */
+
+    @keyframes logoBreath {
+      0%   { transform: scale(1); }
+      45%  { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes energyBreath {
+      0%   { transform: scale(1); opacity: 0.55; }
+      50%  { transform: scale(1.15); opacity: 0.9; }
+      100% { transform: scale(1); opacity: 0.55; }
+    }
+
+    @keyframes wrapperBreath {
+      0%   { filter: drop-shadow(0 0 35px rgba(0,180,255,0.35)); }
+      50%  { filter: drop-shadow(0 0 60px rgba(0,180,255,0.55)); }
+      100% { filter: drop-shadow(0 0 35px rgba(0,180,255,0.35)); }
+    }
+
     /* ================= MOBILE ================= */
 
     @media (max-width: 768px) {
@@ -110,7 +130,7 @@
         height: 260px;
       }
 
-      .logo-wrapper::before {
+      .energy-field {
         width: 200px;
         height: 200px;
       }
@@ -133,12 +153,9 @@
 
   <div class="stage">
     <div class="logo-wrapper" id="logoWrapper">
+      <div class="energy-field"></div>
       <div class="orbit"></div>
-
-      <!-- 🔥 LOGO TRASPARENTE CORRETTO -->
-      <img src="logo-removebg-preview.png"
-           class="logo"
-           alt="niro.digital logo">
+      <img src="logo-removebg-preview.png" class="logo" alt="niro.digital logo">
     </div>
   </div>
 
@@ -147,36 +164,17 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // orbita lenta
+    // orbita continua
     gsap.to(".orbit", {
       rotation: 360,
-      duration: 34,
+      duration: 36,
       repeat: -1,
       ease: "none"
-    });
-
-    // respiro logo
-    gsap.to(".logo", {
-      scale: 1.08,
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
-    });
-
-    // respiro campo energetico
-    gsap.to(".logo-wrapper", {
-      filter: "drop-shadow(0 0 45px rgba(0,180,255,0.45))",
-      duration: 3,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut"
     });
 
     // scroll = potenza
     gsap.to("#logoWrapper", {
       scale: 1.32,
-      filter: "drop-shadow(0 0 70px rgba(255,180,0,0.6))",
       scrollTrigger: {
         trigger: document.body,
         start: "top top",
@@ -187,13 +185,13 @@
 
     // parallax mouse
     window.addEventListener("mousemove", e => {
-      const x = (e.clientX / innerWidth - 0.5) * 18;
-      const y = (e.clientY / innerHeight - 0.5) * 18;
+      const x = (e.clientX / innerWidth - 0.5) * 16;
+      const y = (e.clientY / innerHeight - 0.5) * 16;
 
       gsap.to("#logoWrapper", {
         x,
         y,
-        duration: 0.6,
+        duration: 0.8,
         ease: "power3.out"
       });
     });
