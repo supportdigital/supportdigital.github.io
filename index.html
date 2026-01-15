@@ -49,8 +49,11 @@
       border: 1px solid rgba(0,180,255,0.25);
     }
 
+    /* 🔥 LOGO POTENZIATO */
     .logo {
-      width: 220px;
+      width: 280px;        /* più grande */
+      max-width: 85%;      /* responsive */
+      height: auto;
       z-index: 2;
     }
 
@@ -83,7 +86,7 @@
   <div class="stage">
     <div class="logo-wrapper" id="logoWrapper">
       <div class="orbit"></div>
-      <img src="logo.png" class="logo" alt="logo">
+      <img src="logo.png" class="logo" alt="niro.digital logo">
     </div>
   </div>
 
@@ -92,17 +95,17 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    // orbita continua
+    // orbita continua (più elegante)
     gsap.to(".orbit", {
       rotation: 360,
-      duration: 28,
+      duration: 32,
       repeat: -1,
       ease: "none"
     });
 
-    // respiro del logo
+    // 🔥 respiro più deciso del logo
     gsap.to(".logo", {
-      scale: 1.04,
+      scale: 1.08,
       duration: 3,
       repeat: -1,
       yoyo: true,
@@ -127,7 +130,8 @@
       const y = (e.clientY / innerHeight - 0.5) * 20;
 
       gsap.to("#logoWrapper", {
-        x, y,
+        x,
+        y,
         duration: 0.6,
         ease: "power3.out"
       });
