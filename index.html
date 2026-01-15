@@ -9,10 +9,7 @@
     <style>
       :root {
         --hero-min-height: 100vh;
-
-        /* ✅ QUI: colore oro unico per tutte le scritte */
         --gold: #d6b25c;
-
         --bg-fallback: #07192f;
       }
 
@@ -33,7 +30,6 @@
         place-items: center;
       }
 
-      /* ✅ Questo è il contenitore che Vanta userà */
       #hero-vanta {
         position: absolute;
         inset: 0;
@@ -42,7 +38,6 @@
         z-index: 0;
       }
 
-      /* overlay leggero */
       .hero::after {
         content: "";
         position: absolute;
@@ -91,7 +86,7 @@
 
       .actions {
         display: flex;
-        gap: 12px;
+        gap: 14px;
         justify-content: center;
         flex-wrap: wrap;
       }
@@ -133,6 +128,22 @@
         font-size: clamp(0.9rem, 1.2vw, 1.1rem);
         text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
       }
+
+      section {
+        padding: 72px 20px;
+        max-width: 980px;
+        margin: 0 auto;
+        color: #e8eefc;
+      }
+
+      .panel {
+        border-radius: 20px;
+        padding: 24px;
+        background: #0b1220;
+      }
+
+      .panel h2 { margin: 0 0 10px; }
+      .panel p { margin: 0; opacity: 0.92; line-height: 1.6; }
     </style>
   </head>
 
@@ -144,49 +155,53 @@
         <div class="services">WEB - MOBILE - SEO - SAAS</div>
 
         <div class="center">
-          <img
-            class="brand-logo"
-            src="./logo-removebg-preview.png"
-            alt="niro.digital"
-            decoding="async"
-          />
+          <img class="brand-logo" src="./logo-removebg-preview.png" alt="niro.digital" decoding="async" />
 
           <div class="actions">
-  <a class="btn btn-primary" href="#servizi">Servizi</a>
-  <a class="btn btn-ghost" href="#portfolio">Portfolio</a>
-  <a class="btn btn-ghost" href="#contatti">Contatti</a>
-  </div>
-
+            <a class="btn btn-primary" href="#servizi">Servizi</a>
+            <a class="btn btn-ghost" href="#portfolio">Portfolio</a>
+            <a class="btn btn-ghost" href="#contatti">Contatti</a>
+          </div>
+        </div>
 
         <p class="tagline">HIGH END - DIGITAL ENGINEERING</p>
       </div>
     </header>
 
-    <!-- Sezione placeholder (solo per far funzionare il link "Servizi") -->
-    <div id="soon" style="height: 1px;"></div>
+    <section id="servizi">
+      <div class="panel">
+        <h2>Servizi</h2>
+        <p>Qui inseriremo l’elenco dei servizi (WEB, Mobile, SEO, SaaS).</p>
+      </div>
+    </section>
 
-    <!-- ✅ IMPORTANTISSIMO: questi 2 script DEVONO esserci e stare in fondo -->
+    <section id="portfolio">
+      <div class="panel">
+        <h2>Portfolio</h2>
+        <p>Qui metteremo 3–6 lavori con screenshot + link.</p>
+      </div>
+    </section>
+
+    <section id="contatti">
+      <div class="panel">
+        <h2>Contatti</h2>
+        <p>
+          Scrivimi: <a href="mailto:info@niro.digital" style="color: var(--gold); text-decoration: none;">info@niro.digital</a>
+        </p>
+      </div>
+    </section>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
 
     <script>
       window.addEventListener("load", () => {
         const el = document.querySelector("#hero-vanta");
-        if (!el) return;
-
-        if (!window.THREE) {
-          console.error("THREE non caricato");
-          return;
-        }
-        if (!window.VANTA?.BIRDS) {
-          console.error("VANTA.BIRDS non caricato");
-          return;
-        }
+        if (!el || !window.THREE || !window.VANTA?.BIRDS) return;
 
         window.__heroVanta?.destroy?.();
         window.__heroVanta = window.VANTA.BIRDS({
           el,
-
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
@@ -194,7 +209,6 @@
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-
           backgroundColor: 0x07192f,
           backgroundAlpha: 1,
           color1: 0xff0000,
