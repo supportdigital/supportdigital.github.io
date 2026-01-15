@@ -44,7 +44,7 @@
       filter: drop-shadow(0 0 30px rgba(0,180,255,0.25));
     }
 
-    /* campo energetico dietro al logo */
+    /* campo energetico */
     .logo-wrapper::before {
       content: "";
       position: absolute;
@@ -71,7 +71,7 @@
       z-index: 0;
     }
 
-    /* logo */
+    /* LOGO — TRASPARENTE */
     .logo {
       position: relative;
       width: 290px;
@@ -134,7 +134,11 @@
   <div class="stage">
     <div class="logo-wrapper" id="logoWrapper">
       <div class="orbit"></div>
-      <img src="logo.png" class="logo" alt="niro.digital logo">
+
+      <!-- 🔥 LOGO TRASPARENTE CORRETTO -->
+      <img src="logo-removebg-preview.png"
+           class="logo"
+           alt="niro.digital logo">
     </div>
   </div>
 
@@ -143,7 +147,7 @@
   <script>
     gsap.registerPlugin(ScrollTrigger);
 
-    /* orbita lenta, elegante */
+    // orbita lenta
     gsap.to(".orbit", {
       rotation: 360,
       duration: 34,
@@ -151,7 +155,7 @@
       ease: "none"
     });
 
-    /* respiro logo */
+    // respiro logo
     gsap.to(".logo", {
       scale: 1.08,
       duration: 3,
@@ -160,16 +164,16 @@
       ease: "sine.inOut"
     });
 
-    /* respiro campo energetico */
-    gsap.to(".logo-wrapper::before", {
-      opacity: 0.9,
+    // respiro campo energetico
+    gsap.to(".logo-wrapper", {
+      filter: "drop-shadow(0 0 45px rgba(0,180,255,0.45))",
       duration: 3,
       repeat: -1,
       yoyo: true,
       ease: "sine.inOut"
     });
 
-    /* scroll = potenza */
+    // scroll = potenza
     gsap.to("#logoWrapper", {
       scale: 1.32,
       filter: "drop-shadow(0 0 70px rgba(255,180,0,0.6))",
@@ -181,6 +185,19 @@
       }
     });
 
-    /* parallax mouse */
+    // parallax mouse
     window.addEventListener("mousemove", e => {
-      const x = (e.clientX / innerWidth -
+      const x = (e.clientX / innerWidth - 0.5) * 18;
+      const y = (e.clientY / innerHeight - 0.5) * 18;
+
+      gsap.to("#logoWrapper", {
+        x,
+        y,
+        duration: 0.6,
+        ease: "power3.out"
+      });
+    });
+  </script>
+
+</body>
+</html>
