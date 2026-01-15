@@ -2,127 +2,140 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>niro.digital</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>niro.digital — High-End Digital Engineering</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
+    /* RESET */
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      height: 100vh;
-      background: radial-gradient(
-        circle at top,
-        #0a1630 0%,
-        #040812 70%,
-        #000000 100%
-      );
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #0b1b3a 0%, #05070f 55%, #000 100%);
+      font-family: "Helvetica Neue", Arial, sans-serif;
       color: #d4af37;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
+    /* HERO */
     .hero {
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      justify-content: space-between;
+      padding: 40px 20px;
       position: relative;
     }
 
+    /* TOP TEXT */
     .services {
-      position: absolute;
-      top: 40px;
-      letter-spacing: 0.3em;
+      letter-spacing: 0.25em;
+      font-size: 14px;
       font-weight: 600;
-      font-size: 0.9rem;
-      color: #d4af37;
+      text-align: center;
+      z-index: 5;
     }
 
-    /* --- PLANET --- */
-    .planet {
-      width: 55vmin;
-      height: 55vmin;
-      border-radius: 50%;
-      background:
-        linear-gradient(
-          135deg,
-          rgba(255,255,255,0.15),
-          rgba(0,0,0,0.55)
-        ),
-        repeating-linear-gradient(
-          8deg,
-          #8b6a3e 0px,
-          #8b6a3e 18px,
-          #a07c4f 18px,
-          #a07c4f 36px
-        );
-      box-shadow:
-        inset -40px -40px 80px rgba(0,0,0,0.6),
-        inset 30px 30px 60px rgba(255,255,255,0.05),
-        0 0 120px rgba(0,0,0,0.9);
+    /* PLANET CONTAINER */
+    .planet-wrapper {
+      position: relative;
+      width: 85vw;
+      max-width: 720px;
+      aspect-ratio: 1 / 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      animation: breathe 14s ease-in-out infinite;
     }
 
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.035); }
+    /* PLANET */
+    .planet {
+      position: absolute;
+      inset: 0;
+      background: url("saturn.png") center/cover no-repeat;
+      border-radius: 50%;
+      animation: rotatePlanet 220s linear infinite;
+      filter: brightness(0.78) contrast(1.08) saturate(0.95);
+      z-index: 1;
     }
 
-    /* --- LOGO --- */
+    /* FADING BOTTOM */
+    .planet::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 58%,
+        rgba(5,7,15,0.9) 78%,
+        #000 100%
+      );
+      border-radius: 50%;
+    }
+
+    /* LOGO */
     .logo {
-      width: 85%;
-      max-width: 420px;
+      position: relative;
+      width: 88%;
+      max-width: 560px;
+      z-index: 3;
       filter:
-        drop-shadow(0 10px 25px rgba(0,0,0,0.8))
-        drop-shadow(0 0 28px rgba(30,90,180,0.45));
-      z-index: 2;
+        drop-shadow(0 0 18px rgba(0,0,0,0.8))
+        drop-shadow(0 0 40px rgba(255,215,120,0.25));
     }
 
+    /* TAGLINE */
     .tagline {
-      position: absolute;
-      bottom: 70px;
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-      color: #d4af37;
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      text-align: center;
+      margin-bottom: 18px;
+      z-index: 5;
     }
 
+    /* SCROLL */
     .scroll {
-      position: absolute;
-      bottom: 30px;
-      font-size: 0.75rem;
-      letter-spacing: 0.4em;
-      opacity: 0.7;
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      opacity: 0.55;
+      margin-bottom: 10px;
     }
 
-    @media (max-width: 768px) {
-      .planet {
-        width: 65vmin;
-        height: 65vmin;
+    /* ANIMATION */
+    @keyframes rotatePlanet {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+      .services {
+        font-size: 12px;
+      }
+      .tagline {
+        font-size: 14px;
       }
       .logo {
-        width: 90%;
+        width: 92%;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="hero">
+  <section class="hero">
 
     <div class="services">
       WEB • MOBILE • SEO • SAAS
     </div>
 
-    <div class="planet">
+    <div class="planet-wrapper">
+      <div class="planet"></div>
       <img
         src="logo-removebg-preview.png"
         alt="niro.digital"
@@ -138,6 +151,6 @@
       SCROLL
     </div>
 
-  </div>
+  </section>
 </body>
 </html>
