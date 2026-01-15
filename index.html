@@ -17,26 +17,41 @@ html, body {
   color: white;
 }
 
-/* ===== OVERLAY TESTI ===== */
+canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+/* ===== OVERLAY ===== */
 .overlay {
   position: fixed;
   inset: 0;
   z-index: 3;
   pointer-events: none;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
-  margin-top: 60px;
+  margin-top: 50px;
   letter-spacing: 0.25em;
   font-size: 14px;
   opacity: 0.85;
 }
 
+.logo {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  animation: breathe 6s ease-in-out infinite;
+}
+
 .manifesto {
   position: absolute;
   bottom: 140px;
-  width: 100%;
   font-size: 20px;
   letter-spacing: 0.12em;
 }
@@ -44,48 +59,15 @@ html, body {
 .hint {
   position: absolute;
   bottom: 50px;
-  width: 100%;
   font-size: 13px;
   letter-spacing: 0.3em;
   opacity: 0.5;
 }
 
-/* ===== FALLBACK VISIVO ===== */
-.fallback {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fallback .planet {
-  width: 360px;
-  height: 360px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, #4cc3ff, #0b2c55 70%);
-  box-shadow:
-    0 0 80px rgba(80,160,255,0.4),
-    inset -30px -40px 80px rgba(0,0,0,0.4);
-}
-
-.fallback .ring {
-  position: absolute;
-  width: 520px;
-  height: 160px;
-  border-radius: 50%;
-  border: 2px solid rgba(255,200,120,0.35);
-  transform: rotateX(70deg) rotateZ(-20deg);
-}
-
-/* ===== CANVAS WEBGL ===== */
-canvas {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  display: none;
+@keyframes breathe {
+  0% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.05); }
+  100% { transform: translateY(-50%) scale(1); }
 }
 </style>
 </head>
@@ -94,93 +76,107 @@ canvas {
 
 <div class="overlay">
   <div class="title">WEB • MOBILE • SAAS</div>
+  <img src="logo-removebg-preview.png" class="logo" alt="niro.digital">
   <div class="manifesto">We build digital systems that don’t blink.</div>
   <div class="hint">SCROLL</div>
-</div>
-
-<div class="fallback" id="fallback">
-  <div class="planet"></div>
-  <div class="ring"></div>
 </div>
 
 <script src="https://unpkg.com/three@0.158.0/build/three.min.js"></script>
 
 <script>
-/* ===== DETECT WEBGL ===== */
+/* ===== WEBGL DETECT ===== */
 function webglAvailable() {
   try {
-    const canvas = document.createElement("canvas");
-    return !!(
-      window.WebGLRenderingContext &&
-      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-    );
+    const c = document.createElement("canvas");
+    return !!(window.WebGLRenderingContext && c.getContext("webgl"));
   } catch {
     return false;
   }
 }
 
-if (webglAvailable()) {
-  document.getElementById("fallback").style.display = "none";
+if (!webglAvailable()) return;
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+/* ===== SCENA ===== */
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(innerWidth, innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setClearColor(0x050a14, 1);
+document.body.prepend(renderer.domElement);
+
+/* ===== LUCI ===== */
+scene.add(new THREE.AmbientLight(0x446688, 0.9));
+
+const light = new THREE.PointLight(0xffcc88, 1.6, 20);
+light.position.set(4, 3, 6);
+scene.add(light);
+
+/* ===== PIANETA ===== */
+const planet = new THREE.Mesh(
+  new THREE.SphereGeometry(1.6, 64, 64),
+  new THREE.MeshStandardMaterial({
+    color: 0x1b3a5a,
+    metalness: 0.6,
+    roughness: 0.25,
+    emissive: 0x0b2233,
+    emissiveIntensity: 0.6
+  })
+);
+scene.add(planet);
+
+/* ===== ANELLO ===== */
+const ring = new THREE.Mesh(
+  new THREE.RingGeometry(2.2, 3.2, 128),
+  new THREE.MeshStandardMaterial({
+    color: 0xffcc88,
+    metalness: 0.9,
+    roughness: 0.35,
+    side: THREE.DoubleSide,
+    transparent: true,
+    opacity: 0.85
+  })
+);
+ring.rotation.x = Math.PI / 2.4;
+ring.rotation.z = -0.4;
+scene.add(ring);
+
+/* ===== INTERAZIONE ===== */
+let mouseX = 0, mouseY = 0;
+window.addEventListener("mousemove", e => {
+  mouseX = (e.clientX / innerWidth - 0.5) * 0.8;
+  mouseY = (e.clientY / innerHeight - 0.5) * 0.8;
+});
+
+/* ===== SCROLL ===== */
+window.addEventListener("scroll", () => {
+  const p = scrollY / (document.body.scrollHeight - innerHeight);
+  camera.position.z = 5 - p * 1.5;
+});
+
+/* ===== RESIZE ===== */
+window.addEventListener("resize", () => {
+  camera.aspect = innerWidth / innerHeight;
+  camera.updateProjectionMatrix();
   renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-  renderer.setClearColor(0x050a14, 1);
-  document.body.prepend(renderer.domElement);
-  renderer.domElement.style.display = "block";
+});
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(45, innerWidth / innerHeight, 0.1, 100);
-  camera.position.z = 5;
+/* ===== LOOP ===== */
+function animate() {
+  requestAnimationFrame(animate);
 
-  scene.add(new THREE.AmbientLight(0x446688, 0.8));
-  const light = new THREE.PointLight(0xffcc88, 1.4, 20);
-  light.position.set(4, 3, 6);
-  scene.add(light);
+  planet.rotation.y += 0.002;
+  ring.rotation.z += 0.0015;
 
-  const planet = new THREE.Mesh(
-    new THREE.SphereGeometry(1.5, 64, 64),
-    new THREE.MeshStandardMaterial({
-      color: 0x1b2d42,
-      metalness: 0.7,
-      roughness: 0.25,
-      emissive: 0x0b2233,
-      emissiveIntensity: 0.7
-    })
-  );
-  scene.add(planet);
+  planet.rotation.x += (mouseY - planet.rotation.x) * 0.05;
+  planet.rotation.y += (mouseX - planet.rotation.y) * 0.05;
 
-  const ring = new THREE.Mesh(
-    new THREE.RingGeometry(2.1, 3.1, 128),
-    new THREE.MeshStandardMaterial({
-      color: 0xffcc88,
-      metalness: 0.9,
-      roughness: 0.35,
-      side: THREE.DoubleSide,
-      transparent: true,
-      opacity: 0.85
-    })
-  );
-  ring.rotation.x = Math.PI / 2.4;
-  ring.rotation.z = -0.4;
-  scene.add(ring);
-
-  let mouseX = 0, mouseY = 0;
-  window.addEventListener("mousemove", e => {
-    mouseX = (e.clientX / innerWidth - 0.5) * 0.6;
-    mouseY = (e.clientY / innerHeight - 0.5) * 0.6;
-  });
-
-  function animate() {
-    requestAnimationFrame(animate);
-    planet.rotation.y += 0.002;
-    ring.rotation.z += 0.0015;
-    planet.rotation.x += (mouseY - planet.rotation.x) * 0.05;
-    planet.rotation.y += (mouseX - planet.rotation.y) * 0.05;
-    renderer.render(scene, camera);
-  }
-  animate();
+  renderer.render(scene, camera);
 }
+animate();
 </script>
 
 </body>
