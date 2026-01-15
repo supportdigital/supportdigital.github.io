@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>niro.digital — High-End Digital Engineering</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>niro.digital</title>
 
 <style>
 html, body {
   margin: 0;
-  padding: 0;
   height: 100%;
-  background: radial-gradient(circle at top, #0b3c7a, #050d1f);
+  background: radial-gradient(circle at top, #081a3a, #020814);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   overflow: hidden;
 }
@@ -25,33 +24,37 @@ html, body {
   color: #e8c97a;
 }
 
+/* TESTO ALTO */
 .top-text {
   position: absolute;
-  top: 36px;
-  font-size: 14px;
-  letter-spacing: 6px;
+  top: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 5px;
   text-transform: uppercase;
+  z-index: 10;
 }
 
-.planet-wrapper {
+/* PIANETA */
+.planet {
   position: relative;
-  width: min(78vw, 420px);
-  aspect-ratio: 1 / 1;
+  width: min(65vw, 360px);
+  aspect-ratio: 1/1;
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #4fe3ff, #0a2f63 70%);
+  background: radial-gradient(circle at 30% 30%, #2fa4ff, #06204a 70%);
   box-shadow:
-    inset -50px -50px 90px rgba(0,0,0,0.35),
-    0 0 90px rgba(79,227,255,0.28);
+    inset -40px -40px 80px rgba(0,0,0,0.4),
+    0 0 70px rgba(47,164,255,0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  animation: breathe 6s ease-in-out infinite;
+  animation: breathe 7s ease-in-out infinite;
+  z-index: 2;
 }
 
-/* RESPIRO */
 @keyframes breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); }
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.025); }
 }
 
 /* CERCHI ATOMO */
@@ -59,53 +62,46 @@ html, body {
   position: absolute;
   width: 140%;
   height: 140%;
-  border: 1px solid rgba(120,200,255,0.22);
+  border: 1px solid rgba(120,180,255,0.25);
   border-radius: 50%;
-  animation: spin 26s linear infinite;
-  pointer-events: none;
+  animation: spin 30s linear infinite;
+  z-index: 1;
 }
 
-.orbit:nth-child(2) {
-  transform: rotate(60deg);
-  animation-duration: 32s;
-}
-
-.orbit:nth-child(3) {
-  transform: rotate(-60deg);
-  animation-duration: 38s;
-}
+.orbit:nth-child(2) { transform: rotate(60deg); animation-duration: 40s; }
+.orbit:nth-child(3) { transform: rotate(-60deg); animation-duration: 50s; }
 
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-/* LOGO — ORA È SERIO */
+/* LOGO */
 .logo {
   width: 85%;
-  max-width: 360px;
   z-index: 3;
-  animation: logoFloat 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite;
 }
 
-@keyframes logoFloat {
+@keyframes float {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
 
+/* SOTTOTITOLO */
 .subtitle {
-  margin-top: 42px;
+  margin-top: 36px;
   font-size: 18px;
   letter-spacing: 2px;
-  color: #e8c97a;
+  font-weight: 500;
 }
 
 .scroll {
   position: absolute;
-  bottom: 28px;
+  bottom: 26px;
   font-size: 11px;
   letter-spacing: 4px;
-  opacity: 0.65;
+  opacity: 0.6;
 }
 </style>
 </head>
@@ -115,16 +111,12 @@ html, body {
 
   <div class="top-text">WEB • MOBILE • SEO • SAAS</div>
 
-  <div class="planet-wrapper">
+  <div class="planet">
     <div class="orbit"></div>
     <div class="orbit"></div>
     <div class="orbit"></div>
 
-    <img
-      src="logo-removebg-preview.png"
-      alt="niro.digital"
-      class="logo"
-    />
+    <img src="logo-removebg-preview.png" class="logo" alt="niro.digital">
   </div>
 
   <div class="subtitle">High-End Digital Engineering</div>
