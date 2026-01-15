@@ -3,143 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>niro.digital – High-End Digital Engineering</title>
+<title>niro.digital</title>
 
 <style>
-:root{
-  --bg:#061a33;
-  --blue1:#0a2e5c;
-  --blue2:#0fb9ff;
-  --gold:#d6b46a;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: radial-gradient(circle at top, #0a1a33 0%, #030812 70%);
+  font-family: Arial, Helvetica, sans-serif;
+  color: #d6b56f;
+  overflow-x: hidden;
 }
 
-*{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  background:radial-gradient(circle at top,var(--blue2),var(--bg));
-  font-family:system-ui,Segoe UI,Arial,sans-serif;
-  color:white;
-  overflow-x:hidden;
+/* TOP SERVICES */
+.top-text {
+  position: absolute;
+  top: 32px;
+  width: 100%;
+  text-align: center;
+  letter-spacing: 6px;
+  font-size: 13px;
+  z-index: 5;
 }
 
-.hero{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-between;
-  padding:40px 20px;
-  text-align:center;
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
 }
 
-/* TOP TEXT */
-.top{
-  font-weight:600;
-  letter-spacing:4px;
-  color:var(--gold);
-}
-
-/* PLANET */
-.planet-wrap{
-  position:relative;
-  width:min(70vw,520px);
-  aspect-ratio:1/1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* PLANET CORE */
-.planet{
-  position:absolute;
-  inset:0;
-  border-radius:50%;
+/* PLANET (BACKGROUND ELEMENT) */
+.planet {
+  width: min(65vw, 420px);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
   background:
-    radial-gradient(circle at 30% 30%,#18e0ff,#0a5db8 55%,#062b55 75%);
-  animation:breath 6s ease-in-out infinite;
+    radial-gradient(circle at 30% 30%, #1fd1ff, #0b3c9a 55%, #040f2b 100%);
   box-shadow:
-    0 0 80px rgba(15,185,255,.35),
-    inset -40px -40px 80px rgba(0,0,0,.35);
+    0 0 60px rgba(20,120,255,0.35),
+    inset -25px -35px 50px rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 40px;
 }
 
-/* RINGS (pseudo 3D) */
-.ring{
-  position:absolute;
-  width:130%;
-  height:28%;
-  border-radius:50%;
-  border:2px solid rgba(15,185,255,.25);
-  transform:rotate(-12deg);
-  animation:ring 14s linear infinite;
+/* ATOMIC ORBITS */
+.orbit {
+  position: absolute;
+  width: 140%;
+  height: 70%;
+  border-radius: 50%;
+  border: 1px solid rgba(180,220,255,0.18);
 }
 
-.ring:nth-child(2){
-  width:160%;
-  height:36%;
-  border-color:rgba(214,180,106,.25);
-  animation-duration:22s;
+.orbit.one {
+  transform: rotate(25deg);
+}
+
+.orbit.two {
+  transform: rotate(-35deg);
 }
 
 /* LOGO */
-.logo{
-  position:relative;
-  width:85%;
-  max-width:420px;
-  z-index:3;
-  filter:drop-shadow(0 0 25px rgba(15,185,255,.5));
+.logo {
+  width: 70%;
+  max-width: 300px;
+  z-index: 2;
 }
 
-/* BOTTOM TEXT */
-.bottom{
-  color:var(--gold);
-  letter-spacing:3px;
-  font-size:clamp(14px,2.2vw,18px);
+/* TAGLINE */
+.tagline {
+  margin-top: 36px;
+  font-size: 16px;
+  letter-spacing: 4px;
+  text-align: center;
 }
 
-.scroll{
-  opacity:.6;
-  font-size:12px;
-  letter-spacing:3px;
-}
-
-/* ANIMATIONS */
-@keyframes breath{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.06)}
-}
-
-@keyframes ring{
-  from{transform:rotate(-12deg)}
-  to{transform:rotate(348deg)}
+/* SCROLL */
+.scroll {
+  position: absolute;
+  bottom: 36px;
+  font-size: 11px;
+  letter-spacing: 4px;
+  opacity: 0.55;
 }
 
 /* MOBILE */
-@media(max-width:600px){
-  .planet-wrap{width:85vw}
-  .top{font-size:13px}
+@media (max-width: 768px) {
+  .planet {
+    width: 75vw;
+  }
+  .logo {
+    width: 75%;
+  }
+  .tagline {
+    font-size: 14px;
+  }
 }
 </style>
 </head>
 
 <body>
+
+<div class="top-text">WEB • MOBILE • SEO • SAAS</div>
+
 <section class="hero">
 
-  <div class="top">WEB • MOBILE • SEO • SAAS</div>
+  <div class="planet">
+    <div class="orbit one"></div>
+    <div class="orbit two"></div>
 
-  <div class="planet-wrap">
-    <div class="planet"></div>
-    <div class="ring"></div>
-    <div class="ring"></div>
-
-    <img 
+    <img
       src="logo-removebg-preview.png"
       alt="niro.digital"
-      class="logo">
+      class="logo"
+    >
   </div>
 
-  <div class="bottom">HIGH-END DIGITAL ENGINEERING</div>
+  <div class="tagline">HIGH-END DIGITAL ENGINEERING</div>
+
   <div class="scroll">SCROLL</div>
 
 </section>
+
 </body>
 </html>
