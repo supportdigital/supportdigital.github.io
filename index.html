@@ -150,17 +150,7 @@
       .panel h2 { margin: 0 0 10px; }
       .panel p { margin: 0; opacity: 0.92; line-height: 1.6; }
 
-      .portfolio-grid {
-        margin-top: 18px;
-        display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      @media (max-width: 900px) {
-        .portfolio-grid { grid-template-columns: 1fr; }
-      }
-
+      /* Card system */
       .card {
         border-radius: 18px;
         overflow: hidden;
@@ -224,6 +214,38 @@
         cursor: default;
       }
 
+      /* ✅ SERVIZI GRID (4 cards) */
+      .services-grid {
+        margin-top: 18px;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      @media (max-width: 1024px) {
+        .services-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* PORTFOLIO GRID */
+      .portfolio-grid {
+        margin-top: 18px;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      @media (max-width: 900px) {
+        .portfolio-grid { grid-template-columns: 1fr; }
+      }
+
       /* FOOTER */
       .site-footer {
         padding: 26px 20px 46px;
@@ -284,6 +306,56 @@
       <div class="panel">
         <h2>Servizi</h2>
         <p>Qui inseriremo l’elenco dei servizi (WEB, Mobile, SEO, SaaS).</p>
+
+        <div class="services-grid">
+          <article class="card">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3 class="card-title">Web</h3>
+              <p class="card-desc">Siti vetrina, landing, e-commerce, performance.</p>
+              <div class="pill-row">
+                <span class="pill">UI</span><span class="pill">Speed</span>
+              </div>
+              <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">Dettagli</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3 class="card-title">Mobile</h3>
+              <p class="card-desc">App e soluzioni mobile-first, UX pulita.</p>
+              <div class="pill-row">
+                <span class="pill">UX</span><span class="pill">App</span>
+              </div>
+              <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">Dettagli</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3 class="card-title">SEO</h3>
+              <p class="card-desc">Audit, ottimizzazione tecnica, contenuti.</p>
+              <div class="pill-row">
+                <span class="pill">Tech</span><span class="pill">Growth</span>
+              </div>
+              <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">Dettagli</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="card-body">
+              <h3 class="card-title">SaaS</h3>
+              <p class="card-desc">Prototipi, MVP, dashboard, automazioni.</p>
+              <div class="pill-row">
+                <span class="pill">MVP</span><span class="pill">B2B</span>
+              </div>
+              <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">Dettagli</a>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
