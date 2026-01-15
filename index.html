@@ -9,17 +9,22 @@
     <style>
       :root {
         --hero-min-height: 100vh;
+
+        /* ✅ QUI: colore oro unico per tutte le scritte */
         --gold: #d6b25c;
+
+        --bg-fallback: #07192f;
       }
+
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
         font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        background: #07192f; /* fallback */
+        background: var(--bg-fallback);
         color: white;
       }
 
-      /* HERO */
       .hero {
         position: relative;
         min-height: var(--hero-min-height);
@@ -28,7 +33,7 @@
         place-items: center;
       }
 
-      /* Canvas Vanta SOLO hero */
+      /* ✅ Questo è il contenitore che Vanta userà */
       #hero-vanta {
         position: absolute;
         inset: 0;
@@ -37,19 +42,58 @@
         z-index: 0;
       }
 
-      /* Overlay per leggibilità */
+      /* overlay leggero */
       .hero::after {
         content: "";
         position: absolute;
         inset: 0;
-        background: radial-gradient(closest-side, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.72));
-        z-index: 0;
+        background: radial-gradient(closest-side, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.75));
+        z-index: 1;
         pointer-events: none;
       }
 
-      /* Layout contenuti: top (servizi + logo), bottom (headline) */
       .hero-inner {
         position: relative;
-        z-index: 1;
+        z-index: 2;
         width: min(1100px, calc(100% - 40px));
-        min-height: v
+        min-height: var(--hero-min-height);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 28px 0 48px;
+        text-align: center;
+      }
+
+      .services {
+        color: var(--gold);
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: clamp(0.78rem, 1.15vw, 0.95rem);
+        text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+        user-select: none;
+      }
+
+      .center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin: 10px 0;
+      }
+
+      .brand-logo {
+        width: clamp(240px, 44vw, 640px);
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.6));
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
