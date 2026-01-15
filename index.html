@@ -1,127 +1,143 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>niro.digital</title>
+  <meta charset="UTF-8" />
+  <title>niro.digital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-html, body {
-  margin: 0;
-  height: 100%;
-  background: radial-gradient(circle at top, #081a3a, #020814);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  overflow: hidden;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: #e8c97a;
-}
+    body {
+      height: 100vh;
+      background: radial-gradient(
+        circle at top,
+        #0a1630 0%,
+        #040812 70%,
+        #000000 100%
+      );
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #d4af37;
+      overflow: hidden;
+    }
 
-/* TESTO ALTO */
-.top-text {
-  position: absolute;
-  top: 32px;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  z-index: 10;
-}
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
 
-/* PIANETA */
-.planet {
-  position: relative;
-  width: min(65vw, 360px);
-  aspect-ratio: 1/1;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #2fa4ff, #06204a 70%);
-  box-shadow:
-    inset -40px -40px 80px rgba(0,0,0,0.4),
-    0 0 70px rgba(47,164,255,0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: breathe 7s ease-in-out infinite;
-  z-index: 2;
-}
+    .services {
+      position: absolute;
+      top: 40px;
+      letter-spacing: 0.3em;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #d4af37;
+    }
 
-@keyframes breathe {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.025); }
-}
+    /* --- PLANET --- */
+    .planet {
+      width: 55vmin;
+      height: 55vmin;
+      border-radius: 50%;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(255,255,255,0.15),
+          rgba(0,0,0,0.55)
+        ),
+        repeating-linear-gradient(
+          8deg,
+          #8b6a3e 0px,
+          #8b6a3e 18px,
+          #a07c4f 18px,
+          #a07c4f 36px
+        );
+      box-shadow:
+        inset -40px -40px 80px rgba(0,0,0,0.6),
+        inset 30px 30px 60px rgba(255,255,255,0.05),
+        0 0 120px rgba(0,0,0,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: breathe 14s ease-in-out infinite;
+    }
 
-/* CERCHI ATOMO */
-.orbit {
-  position: absolute;
-  width: 140%;
-  height: 140%;
-  border: 1px solid rgba(120,180,255,0.25);
-  border-radius: 50%;
-  animation: spin 30s linear infinite;
-  z-index: 1;
-}
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.035); }
+    }
 
-.orbit:nth-child(2) { transform: rotate(60deg); animation-duration: 40s; }
-.orbit:nth-child(3) { transform: rotate(-60deg); animation-duration: 50s; }
+    /* --- LOGO --- */
+    .logo {
+      width: 85%;
+      max-width: 420px;
+      filter:
+        drop-shadow(0 10px 25px rgba(0,0,0,0.8))
+        drop-shadow(0 0 28px rgba(30,90,180,0.45));
+      z-index: 2;
+    }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+    .tagline {
+      position: absolute;
+      bottom: 70px;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: #d4af37;
+    }
 
-/* LOGO */
-.logo {
-  width: 85%;
-  z-index: 3;
-  animation: float 6s ease-in-out infinite;
-}
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      opacity: 0.7;
+    }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* SOTTOTITOLO */
-.subtitle {
-  margin-top: 36px;
-  font-size: 18px;
-  letter-spacing: 2px;
-  font-weight: 500;
-}
-
-.scroll {
-  position: absolute;
-  bottom: 26px;
-  font-size: 11px;
-  letter-spacing: 4px;
-  opacity: 0.6;
-}
-</style>
+    @media (max-width: 768px) {
+      .planet {
+        width: 65vmin;
+        height: 65vmin;
+      }
+      .logo {
+        width: 90%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<section class="hero">
+  <div class="hero">
 
-  <div class="top-text">WEB • MOBILE • SEO • SAAS</div>
+    <div class="services">
+      WEB • MOBILE • SEO • SAAS
+    </div>
 
-  <div class="planet">
-    <div class="orbit"></div>
-    <div class="orbit"></div>
-    <div class="orbit"></div>
+    <div class="planet">
+      <img
+        src="logo-removebg-preview.png"
+        alt="niro.digital"
+        class="logo"
+      />
+    </div>
 
-    <img src="logo-removebg-preview.png" class="logo" alt="niro.digital">
+    <div class="tagline">
+      High-End Digital Engineering
+    </div>
+
+    <div class="scroll">
+      SCROLL
+    </div>
+
   </div>
-
-  <div class="subtitle">High-End Digital Engineering</div>
-  <div class="scroll">SCROLL</div>
-
-</section>
 </body>
 </html>
