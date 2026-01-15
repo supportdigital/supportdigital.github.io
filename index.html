@@ -18,7 +18,7 @@
 
     body {
       height: 200vh;
-      background: radial-gradient(circle at center, #070b12, #000);
+      background: radial-gradient(circle at center, #050a14, #000);
       overflow-x: hidden;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
       color: white;
@@ -33,68 +33,83 @@
       align-items: center;
       justify-content: center;
       pointer-events: none;
+      perspective: 1200px;
     }
 
-    .logo-wrapper {
+    .planet-system {
       position: relative;
-      width: 340px;
-      height: 340px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: wrapperBreath 9s ease-in-out infinite;
+      width: 360px;
+      height: 360px;
+      transform-style: preserve-3d;
     }
 
-    /* ================= ENERGY FIELD ================= */
+    /* ================= ENERGY SPHERE ================= */
 
     .energy-field {
       position: absolute;
-      width: 260px;
-      height: 260px;
+      inset: 40px;
       border-radius: 50%;
       background: radial-gradient(
         circle,
-        rgba(0,180,255,0.35) 0%,
-        rgba(0,180,255,0.18) 45%,
-        rgba(0,180,255,0.08) 65%,
+        rgba(0,160,255,0.45) 0%,
+        rgba(0,160,255,0.22) 45%,
+        rgba(0,160,255,0.08) 65%,
         transparent 75%
       );
-      filter: blur(10px);
-      animation: energyBreath 8.5s ease-in-out infinite;
-      z-index: 1;
+      filter: blur(14px);
+      animation: energyBreath 9s ease-in-out infinite;
+      transform: translateZ(-40px);
     }
 
-    /* ================= ORBIT BASE ================= */
+    /* ================= SATURN RING ================= */
 
-    .orbit {
+    .ring {
       position: absolute;
-      inset: 0;
+      width: 420px;
+      height: 140px;
       border-radius: 50%;
-      border: 1px solid rgba(0,180,255,0.18);
-      z-index: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(0,170,255,0) 0%,
+        rgba(0,170,255,0.8) 25%,
+        rgba(255,190,90,0.9) 50%,
+        rgba(0,170,255,0.8) 75%,
+        rgba(0,170,255,0) 100%
+      );
+      filter: blur(0.6px);
+      opacity: 0.85;
+      transform:
+        rotateX(65deg)
+        rotateZ(-20deg);
+      animation: ringRotate 28s linear infinite;
     }
 
-    /* ================= ORBIT ARC (ENERGY BAND) ================= */
+    /* parte dietro */
+    .ring.back {
+      transform:
+        rotateX(65deg)
+        rotateZ(-20deg)
+        translateZ(-60px);
+      opacity: 0.45;
+    }
 
-    .orbit-arc {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 2px solid transparent;
-      border-top-color: rgba(0,180,255,0.9);
-      border-right-color: rgba(255,190,90,0.9);
-      filter: drop-shadow(0 0 12px rgba(255,190,90,0.45));
-      z-index: 0;
+    /* parte davanti */
+    .ring.front {
+      transform:
+        rotateX(65deg)
+        rotateZ(-20deg)
+        translateZ(40px);
+      filter: drop-shadow(0 0 18px rgba(255,190,90,0.45));
     }
 
     /* ================= LOGO ================= */
 
     .logo {
-      position: relative;
-      width: 290px;
-      max-width: 85%;
-      height: auto;
-      z-index: 2;
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 280px;
+      z-index: 5;
       animation: logoBreath 9s ease-in-out infinite;
     }
 
@@ -120,7 +135,13 @@
       opacity: 0.45;
     }
 
-    /* ================= KEYFRAMES ================= */
+    /* ================= ANIMATIONS ================= */
+
+    @keyframes energyBreath {
+      0% { transform: scale(1) translateZ(-40px); opacity: 0.55; }
+      50% { transform: scale(1.15) translateZ(-40px); opacity: 0.9; }
+      100% { transform: scale(1) translateZ(-40px); opacity: 0.55; }
+    }
 
     @keyframes logoBreath {
       0% { transform: scale(1); }
@@ -128,29 +149,22 @@
       100% { transform: scale(1); }
     }
 
-    @keyframes energyBreath {
-      0% { transform: scale(1); opacity: 0.55; }
-      50% { transform: scale(1.15); opacity: 0.9; }
-      100% { transform: scale(1); opacity: 0.55; }
-    }
-
-    @keyframes wrapperBreath {
-      0% { filter: drop-shadow(0 0 35px rgba(0,180,255,0.35)); }
-      50% { filter: drop-shadow(0 0 60px rgba(0,180,255,0.55)); }
-      100% { filter: drop-shadow(0 0 35px rgba(0,180,255,0.35)); }
+    @keyframes ringRotate {
+      from { transform: rotateX(65deg) rotateZ(-20deg) rotate(0deg); }
+      to   { transform: rotateX(65deg) rotateZ(-20deg) rotate(360deg); }
     }
 
     /* ================= MOBILE ================= */
 
     @media (max-width: 768px) {
-      .logo-wrapper {
+      .planet-system {
         width: 260px;
         height: 260px;
       }
 
-      .energy-field {
-        width: 200px;
-        height: 200px;
+      .ring {
+        width: 320px;
+        height: 110px;
       }
 
       .logo {
@@ -170,10 +184,10 @@
   <div class="title">WEB • MOBILE • SAAS</div>
 
   <div class="stage">
-    <div class="logo-wrapper" id="logoWrapper">
+    <div class="planet-system" id="planet">
+      <div class="ring back"></div>
       <div class="energy-field"></div>
-      <div class="orbit"></div>
-      <div class="orbit-arc"></div>
+      <div class="ring front"></div>
       <img src="logo-removebg-preview.png" class="logo" alt="niro.digital logo">
     </div>
   </div>
@@ -181,44 +195,15 @@
   <div class="hint">SCROLL</div>
 
   <script>
-    gsap.registerPlugin(ScrollTrigger);
-
-    // orbita base
-    gsap.to(".orbit", {
-      rotation: 360,
-      duration: 48,
-      repeat: -1,
-      ease: "none"
-    });
-
-    // arco energetico (blu ↔ oro che gira)
-    gsap.to(".orbit-arc", {
-      rotation: 360,
-      duration: 18,
-      repeat: -1,
-      ease: "none"
-    });
-
-    // scroll = potenza
-    gsap.to("#logoWrapper", {
-      scale: 1.32,
-      scrollTrigger: {
-        trigger: document.body,
-        start: "top top",
-        end: "bottom top",
-        scrub: true
-      }
-    });
-
-    // parallax mouse
+    // micro parallax spaziale
     window.addEventListener("mousemove", e => {
-      const x = (e.clientX / innerWidth - 0.5) * 14;
-      const y = (e.clientY / innerHeight - 0.5) * 14;
+      const x = (e.clientX / innerWidth - 0.5) * 10;
+      const y = (e.clientY / innerHeight - 0.5) * 10;
 
-      gsap.to("#logoWrapper", {
-        x,
-        y,
-        duration: 0.9,
+      gsap.to("#planet", {
+        rotateY: x,
+        rotateX: -y,
+        duration: 1,
         ease: "power3.out"
       });
     });
