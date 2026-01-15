@@ -12,45 +12,50 @@ body {
   height: 200vh;
   background: radial-gradient(circle at center, #081a2e, #04080f);
   font-family: system-ui, sans-serif;
-  color: white;
   overflow-x: hidden;
 }
 
-/* ===== TOP LABEL ===== */
-.title {
+/* ===== COLORI BRAND ===== */
+:root {
+  --gold: #f5c77a;
+}
+
+/* ===== TESTI ===== */
+.services {
   position: fixed;
   top: 50px;
   width: 100%;
   text-align: center;
-  letter-spacing: 0.28em;
-  font-size: 14px;
-  opacity: 0.85;
-  z-index: 20;
+  font-size: 18px;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  opacity: 0.95;
+  z-index: 30;
 }
 
-/* ===== TAGLINE CENTRALE ===== */
 .tagline {
   position: fixed;
-  bottom: 150px;
+  bottom: 160px;
   width: 100%;
   text-align: center;
-  font-size: 28px;
-  letter-spacing: 0.18em;
+  font-size: 16px;
+  letter-spacing: 0.25em;
   font-weight: 300;
-  opacity: 0.95;
-  z-index: 20;
+  color: var(--gold);
+  opacity: 0.85;
+  z-index: 30;
 }
 
-/* ===== SCROLL HINT ===== */
 .hint {
   position: fixed;
   bottom: 60px;
   width: 100%;
   text-align: center;
   font-size: 12px;
-  letter-spacing: 0.3em;
-  opacity: 0.5;
-  z-index: 20;
+  letter-spacing: 0.35em;
+  color: var(--gold);
+  opacity: 0.45;
+  z-index: 30;
 }
 
 /* ===== SCENA ===== */
@@ -78,7 +83,7 @@ body {
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(255,180,120,0.6),
+    rgba(255,200,120,0.6),
     rgba(180,90,255,0.35),
     transparent 72%
   );
@@ -107,7 +112,7 @@ body {
   width: 720px;
   height: 210px;
   border-radius: 50%;
-  border: 2px solid rgba(255,200,150,0.35);
+  border: 2px solid rgba(245,199,122,0.35);
   transform:
     translate(-50%, -50%)
     rotateX(70deg)
@@ -170,7 +175,7 @@ body {
 
 <body>
 
-<div class="title">WEB • MOBILE • SEO • SAAS</div>
+<div class="services">WEB • MOBILE • SEO • SAAS</div>
 
 <div class="stage">
   <div class="planet-system" id="planet">
