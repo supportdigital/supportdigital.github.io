@@ -1,137 +1,135 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>niro.digital</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>niro.digital — High-End Digital Engineering</title>
 
 <style>
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: radial-gradient(circle at top, #0a1a33 0%, #030812 70%);
-  font-family: Arial, Helvetica, sans-serif;
-  color: #d6b56f;
-  overflow-x: hidden;
+  background: radial-gradient(circle at top, #0b3c7a, #050d1f);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
 }
 
-/* TOP SERVICES */
-.top-text {
-  position: absolute;
-  top: 32px;
-  width: 100%;
-  text-align: center;
-  letter-spacing: 6px;
-  font-size: 13px;
-  z-index: 5;
-}
-
-/* HERO */
 .hero {
   height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   position: relative;
+  color: #e8c97a;
 }
 
-/* PLANET (BACKGROUND ELEMENT) */
-.planet {
-  width: min(65vw, 420px);
+.top-text {
+  position: absolute;
+  top: 36px;
+  font-size: 14px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.planet-wrapper {
+  position: relative;
+  width: min(78vw, 420px);
   aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, #1fd1ff, #0b3c9a 55%, #040f2b 100%);
+  background: radial-gradient(circle at 30% 30%, #4fe3ff, #0a2f63 70%);
   box-shadow:
-    0 0 60px rgba(20,120,255,0.35),
-    inset -25px -35px 50px rgba(0,0,0,0.6);
+    inset -50px -50px 90px rgba(0,0,0,0.35),
+    0 0 90px rgba(79,227,255,0.28);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  margin-top: 40px;
+  animation: breathe 6s ease-in-out infinite;
 }
 
-/* ATOMIC ORBITS */
+/* RESPIRO */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* CERCHI ATOMO */
 .orbit {
   position: absolute;
   width: 140%;
-  height: 70%;
+  height: 140%;
+  border: 1px solid rgba(120,200,255,0.22);
   border-radius: 50%;
-  border: 1px solid rgba(180,220,255,0.18);
+  animation: spin 26s linear infinite;
+  pointer-events: none;
 }
 
-.orbit.one {
-  transform: rotate(25deg);
+.orbit:nth-child(2) {
+  transform: rotate(60deg);
+  animation-duration: 32s;
 }
 
-.orbit.two {
-  transform: rotate(-35deg);
+.orbit:nth-child(3) {
+  transform: rotate(-60deg);
+  animation-duration: 38s;
 }
 
-/* LOGO */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* LOGO — ORA È SERIO */
 .logo {
-  width: 70%;
-  max-width: 300px;
-  z-index: 2;
+  width: 85%;
+  max-width: 360px;
+  z-index: 3;
+  animation: logoFloat 6s ease-in-out infinite;
 }
 
-/* TAGLINE */
-.tagline {
-  margin-top: 36px;
-  font-size: 16px;
-  letter-spacing: 4px;
-  text-align: center;
+@keyframes logoFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
-/* SCROLL */
+.subtitle {
+  margin-top: 42px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #e8c97a;
+}
+
 .scroll {
   position: absolute;
-  bottom: 36px;
+  bottom: 28px;
   font-size: 11px;
   letter-spacing: 4px;
-  opacity: 0.55;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .planet {
-    width: 75vw;
-  }
-  .logo {
-    width: 75%;
-  }
-  .tagline {
-    font-size: 14px;
-  }
+  opacity: 0.65;
 }
 </style>
 </head>
 
 <body>
-
-<div class="top-text">WEB • MOBILE • SEO • SAAS</div>
-
 <section class="hero">
 
-  <div class="planet">
-    <div class="orbit one"></div>
-    <div class="orbit two"></div>
+  <div class="top-text">WEB • MOBILE • SEO • SAAS</div>
+
+  <div class="planet-wrapper">
+    <div class="orbit"></div>
+    <div class="orbit"></div>
+    <div class="orbit"></div>
 
     <img
       src="logo-removebg-preview.png"
       alt="niro.digital"
       class="logo"
-    >
+    />
   </div>
 
-  <div class="tagline">HIGH-END DIGITAL ENGINEERING</div>
-
+  <div class="subtitle">High-End Digital Engineering</div>
   <div class="scroll">SCROLL</div>
 
 </section>
-
 </body>
 </html>
