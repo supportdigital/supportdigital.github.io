@@ -3,217 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>niro.digital — High-End Digital Engineering</title>
-
-<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<title>TEST LOGO SIZE</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-
 body{
-  height:200vh;
-  background:radial-gradient(circle at center,#071b2f,#02060c);
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,sans-serif;
-  overflow-x:hidden;
+  margin:0;
+  background:#000;
   color:#fff;
-}
-
-/* ===== TESTI ===== */
-.title{
-  position:fixed;
-  top:46px;
-  width:100%;
-  text-align:center;
-  font-size:15px;
-  letter-spacing:.35em;
-  color:#f4c97a;
-  text-shadow:0 1px 0 #c89b4c,0 0 14px rgba(244,201,122,.35);
-  z-index:40;
-}
-
-.subtitle{
-  position:fixed;
-  bottom:90px;
-  width:100%;
-  text-align:center;
-  font-size:17px;
-  letter-spacing:.18em;
-  color:#f4c97a;
-  opacity:.85;
-  z-index:40;
-}
-
-.hint{
-  position:fixed;
-  bottom:40px;
-  width:100%;
-  text-align:center;
-  font-size:12px;
-  letter-spacing:.4em;
-  opacity:.4;
-  z-index:40;
-}
-
-/* ===== SCENA ===== */
-.stage{
-  position:fixed;
-  inset:0;
   display:flex;
   align-items:center;
   justify-content:center;
-  perspective:1600px;
-  pointer-events:none;
+  height:100vh;
 }
 
-.system{
-  position:relative;
+.test{
   width:300px;
   height:300px;
-  transform-style:preserve-3d;
-}
-
-/* ===== PIANETA ===== */
-.planet{
-  position:absolute;
-  inset:0;
   border-radius:50%;
-  background:
-    radial-gradient(circle at 30% 30%,#39c2ff 0%,#0b4f7f 50%,#041c2f 75%);
-  box-shadow:
-    inset -30px -40px 80px rgba(0,0,0,.45),
-    0 0 90px rgba(57,194,255,.35);
-  animation:planetBreath 8s ease-in-out infinite;
-  z-index:3;
+  background:blue;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-/* ===== ATMOSFERA ===== */
-.atmo{
-  position:absolute;
-  inset:-24px;
-  border-radius:50%;
-  background:radial-gradient(circle,
-    rgba(57,194,255,.45),
-    rgba(57,194,255,.18),
-    transparent 70%);
-  filter:blur(20px);
-  animation:atmoBreath 8s ease-in-out infinite;
-  z-index:2;
-}
-
-/* ===== ANELLI 3D ===== */
-.ring{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:420px;
-  height:140px;
-  border-radius:50%;
-  transform-style:preserve-3d;
-  background:
-    linear-gradient(90deg,
-      transparent 0%,
-      rgba(244,201,122,.85) 50%,
-      transparent 100%);
-  filter:blur(1px);
-}
-
-.ring.back{
-  transform:
-    translate(-50%,-50%)
-    rotateX(68deg)
-    rotateY(-6deg)
-    rotateZ(-18deg);
-  opacity:.18;
-  z-index:1;
-  animation:ringDrift 60s linear infinite;
-}
-
-.ring.front{
-  transform:
-    translate(-50%,-50%)
-    rotateX(68deg)
-    rotateY(-6deg)
-    rotateZ(-18deg);
-  opacity:.32;
-  z-index:4;
-  animation:ringDriftReverse 80s linear infinite;
-}
-
-/* ===== LOGO (QUASI FULL) ===== */
-.logo{
-  position:absolute;
-  inset:0;
-  margin:auto;
-  width:260px; /* ~87% pianeta */
-  z-index:5;
-  animation:logoBreath 8s ease-in-out infinite;
-}
-
-/* ===== ANIMAZIONI ===== */
-@keyframes planetBreath{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.08)}
-  100%{transform:scale(1)}
-}
-
-@keyframes atmoBreath{
-  0%{opacity:.55}
-  50%{opacity:1}
-  100%{opacity:.55}
-}
-
-@keyframes logoBreath{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.04)}
-  100%{transform:scale(1)}
-}
-
-@keyframes ringDrift{
-  from{transform:translate(-50%,-50%) rotateX(68deg) rotateY(-6deg) rotateZ(-18deg) rotate(0)}
-  to{transform:translate(-50%,-50%) rotateX(68deg) rotateY(-6deg) rotateZ(-18deg) rotate(360deg)}
-}
-
-@keyframes ringDriftReverse{
-  from{transform:translate(-50%,-50%) rotateX(68deg) rotateY(-6deg) rotateZ(-18deg) rotate(360deg)}
-  to{transform:translate(-50%,-50%) rotateX(68deg) rotateY(-6deg) rotateZ(-18deg) rotate(0)}
-}
-
-/* ===== MOBILE SAFETY ===== */
-@media (max-width:768px){
-  .ring{
-    height:90px;
-    opacity:.15;
-    filter:blur(2px);
-    animation:none;
-  }
+img{
+  width:260px; /* SE QUESTO NON CAMBIA, NON È IL FILE */
 }
 </style>
 </head>
 
 <body>
-
-<div class="title">WEB • MOBILE • SEO • SAAS</div>
-
-<div class="stage">
-  <div class="system" id="planet">
-    <div class="ring back"></div>
-    <div class="atmo"></div>
-    <div class="planet"></div>
-    <div class="ring front"></div>
-    <img src="logo-removebg-preview.png" class="logo" alt="niro.digital">
+  <div class="test">
+    <img src="logo-removebg-preview.png">
   </div>
-</div>
-
-<div class="subtitle">High-End Digital Engineering</div>
-<div class="hint">SCROLL</div>
-
-<script>
-window.addEventListener("mousemove",e=>{
-  const x=(e.clientX/innerWidth-.5)*6;
-  const y=(e.clientY/innerHeight-.5)*6;
-  gsap.to("#planet",{rotateY:x,rotateX:-y,duration:1.4,ease:"power3.out"});
-});
-</script>
-
 </body>
 </html>
