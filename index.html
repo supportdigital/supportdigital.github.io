@@ -8,7 +8,11 @@
   <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
       height: 200vh;
@@ -30,15 +34,68 @@
 
     .planet-system {
       position: relative;
-      width: 340px;
-      height: 340px;
+      width: 360px;
+      height: 360px;
       transform-style: preserve-3d;
     }
 
+    /* ===== ANELLI DI SATURNO ===== */
+
+    .ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 420px;
+      height: 140px;
+      border-radius: 50%;
+      transform-style: preserve-3d;
+    }
+
+    .ring.back {
+      background: linear-gradient(
+        90deg,
+        rgba(0,160,255,0) 0%,
+        rgba(0,160,255,0.35) 30%,
+        rgba(255,190,90,0.35) 50%,
+        rgba(0,160,255,0.35) 70%,
+        rgba(0,160,255,0) 100%
+      );
+
+      transform:
+        translate(-50%, -50%)
+        rotateX(75deg)
+        rotateZ(-20deg)
+        scaleY(0.45)
+        translateZ(-60px);
+
+      opacity: 0.55;
+      z-index: 1;
+    }
+
+    .ring.front {
+      background: linear-gradient(
+        90deg,
+        rgba(0,160,255,0) 0%,
+        rgba(255,200,120,0.9) 50%,
+        rgba(0,160,255,0) 100%
+      );
+
+      transform:
+        translate(-50%, -50%)
+        rotateX(75deg)
+        rotateZ(-20deg)
+        scaleY(0.22)
+        translateZ(18px);
+
+      opacity: 0.75;
+      z-index: 3;
+    }
+
     /* ===== ATMOSFERA ===== */
+
     .energy-field {
       position: absolute;
-      inset: 40px;
+      inset: 50px;
       border-radius: 50%;
       background: radial-gradient(
         circle,
@@ -50,58 +107,13 @@
       filter: blur(14px);
       animation: energyBreath 9s ease-in-out infinite;
       transform: translateZ(-20px);
-      z-index: 1;
-    }
-
-    /* ===== ANELLO SATURNO ===== */
-    .ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 360px;
-      height: 110px;
-      transform-style: preserve-3d;
-      border-radius: 50%;
-      background: linear-gradient(
-        90deg,
-        rgba(0,170,255,0) 0%,
-        rgba(0,170,255,0.9) 25%,
-        rgba(255,190,90,0.95) 50%,
-        rgba(0,170,255,0.9) 75%,
-        rgba(0,170,255,0) 100%
-      );
-      transform:
-        translate(-50%, -50%)
-        rotateX(70deg)
-        rotateZ(-20deg);
-      animation: ringSpin 26s linear infinite;
-    }
-
-    .ring.back {
-      transform:
-        translate(-50%, -50%)
-        rotateX(70deg)
-        rotateZ(-20deg)
-        translateZ(-40px);
-      opacity: 0.45;
-      z-index: 0;
-    }
-
-    .ring.front {
-      transform:
-        translate(-50%, -50%)
-        rotateX(70deg)
-        rotateZ(-20deg)
-        translateZ(10px);
-      filter: drop-shadow(0 0 14px rgba(255,190,90,0.4));
       z-index: 2;
     }
 
-    /* ===== LOGO (PIANETA) ===== */
+    /* ===== LOGO / PIANETA ===== */
+
     .logo {
-      position: absolute;
-      inset: 0;
-      margin: auto;
+      position: relative;
       width: 260px;
       z-index: 5;
       animation: logoBreath 9s ease-in-out infinite;
@@ -127,9 +139,14 @@
       opacity: 0.45;
     }
 
-    @keyframes ringSpin {
-      from { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(-20deg) rotate(0deg); }
-      to   { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(-20deg) rotate(360deg); }
+    .manifesto {
+      position: fixed;
+      bottom: 120px;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      opacity: 0;
     }
 
     @keyframes logoBreath {
@@ -159,6 +176,10 @@
     </div>
   </div>
 
+  <div class="manifesto">
+    We build digital systems that don’t blink.
+  </div>
+
   <div class="hint">SCROLL</div>
 
   <script>
@@ -170,6 +191,23 @@
         rotateY: x,
         rotateX: -y,
         duration: 1,
+        ease: "power3.out"
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      const progress = window.scrollY / (document.body.scrollHeight - innerHeight);
+
+      gsap.to("#planet", {
+        scale: 1 + progress * 0.35,
+        duration: 0.4,
+        ease: "power2.out"
+      });
+
+      gsap.to(".manifesto", {
+        opacity: progress > 0.35 ? 1 : 0,
+        y: progress > 0.35 ? 0 : 20,
+        duration: 0.6,
         ease: "power3.out"
       });
     });
