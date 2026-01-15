@@ -1,144 +1,146 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <title>niro.digital — High-End Digital Engineering</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>niro.digital — High-End Digital Engineering</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont;
+  background: radial-gradient(circle at center, #0b1a33 0%, #050b18 70%);
+  color: #d6b56c;
+}
 
-    body {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      background: #000;
-      overflow-x: hidden;
-      color: #d4af37;
-    }
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 40px 20px;
-      background:
-        radial-gradient(circle at center, rgba(0,0,0,0.2), #000 70%),
-        url("saturn.png") center / cover no-repeat;
-      animation: slowPan 120s linear infinite;
-    }
+/* TESTO TOP */
+.top-text {
+  position: absolute;
+  top: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #d6b56c;
+  z-index: 5;
+}
 
-    /* SLOW SPACE MOTION */
-    @keyframes slowPan {
-      0%   { background-position: 50% 50%; }
-      50%  { background-position: 55% 48%; }
-      100% { background-position: 50% 50%; }
-    }
+/* SATURNO */
+.saturn {
+  position: absolute;
+  width: 70%;
+  max-width: 950px;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: planet-spin 180s linear infinite;
+  pointer-events: none;
+}
 
-    /* OVERLAY TO DARKEN */
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at center,
-        rgba(0,0,0,0.15),
-        rgba(0,0,0,0.85) 75%
-      );
-      z-index: 1;
-    }
+/* ANELLI (pseudo-layer) */
+.saturn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("saturn.png") center / contain no-repeat;
+  animation: rings-spin 90s linear infinite reverse;
+  opacity: 0.9;
+}
 
-    /* TOP TEXT */
-    .services {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      font-size: 14px;
-      letter-spacing: 0.3em;
-      font-weight: 600;
-    }
+/* LOGO */
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  z-index: 4;
+  filter: drop-shadow(0 0 22px rgba(0,0,0,0.75));
+}
 
-    /* CENTER LOGO */
-    .logo-wrapper {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+/* TESTO BOTTOM */
+.bottom-text {
+  position: absolute;
+  bottom: 90px;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #d6b56c;
+  z-index: 5;
+}
 
-    .logo {
-      width: 75vw;
-      max-width: 720px;
-      filter:
-        drop-shadow(0 0 25px rgba(0,0,0,0.9))
-        drop-shadow(0 0 60px rgba(255,215,140,0.35));
-    }
+/* SCROLL */
+.scroll {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 4px;
+  opacity: 0.7;
+}
 
-    /* TAGLINE */
-    .tagline {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 0.18em;
-      margin-bottom: 18px;
-    }
+/* ANIMAZIONI */
+@keyframes planet-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
-    /* SCROLL */
-    .scroll {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      font-size: 12px;
-      letter-spacing: 0.35em;
-      opacity: 0.55;
-      margin-bottom: 10px;
-    }
+@keyframes rings-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
 
-    /* MOBILE */
-    @media (max-width: 600px) {
-      .services {
-        font-size: 12px;
-      }
-      .tagline {
-        font-size: 14px;
-      }
-      .logo {
-        width: 85vw;
-      }
-    }
-  </style>
+/* MOBILE */
+@media (max-width: 768px) {
+  .saturn {
+    width: 90%;
+  }
+  .logo {
+    width: 300px;
+  }
+  .bottom-text {
+    font-size: 16px;
+  }
+}
+</style>
 </head>
 
 <body>
-  <section class="hero">
 
-    <div class="services">
-      WEB • MOBILE • SEO • SAAS
-    </div>
+<div class="hero">
 
-    <div class="logo-wrapper">
-      <img
-        src="logo-removebg-preview.png"
-        alt="niro.digital"
-        class="logo"
-      />
-    </div>
+  <div class="top-text">
+    WEB • MOBILE • SEO • SAAS
+  </div>
 
-    <div class="tagline">
-      High-End Digital Engineering
-    </div>
+  <img src="saturn.png" alt="Saturn" class="saturn">
 
-    <div class="scroll">
-      SCROLL
-    </div>
+  <img src="logo-removebg-preview.png" alt="niro.digital" class="logo">
 
-  </section>
+  <div class="bottom-text">
+    High-End Digital Engineering
+  </div>
+
+  <div class="scroll">
+    SCROLL
+  </div>
+
+</div>
+
 </body>
 </html>
