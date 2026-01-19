@@ -4,54 +4,88 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>SEO — niro.digital</title>
+  <meta name="description" content="SEO strutturata per crescere nel tempo: storytelling, audit tecnici e crescita organica reale." />
+  <link rel="canonical" href="https://niro.digital/seo.html" />
 
   <style>
-    body{margin:0;font-family:system-ui;background:#07192f;color:#e8eefc}
-    header{display:flex;align-items:center;gap:18px;padding:28px;max-width:1200px;margin:0 auto}
-    header img{width:220px}
-    nav{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
-    nav a{color:#d6b25c;text-decoration:none;font-weight:800;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.08)}
-    main{max-width:1200px;margin:0 auto;padding:40px 28px 80px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px}
-    img.hero{width:100%;border-radius:20px}
-    @media(max-width:900px){main{grid-template-columns:1fr}}
+    :root { --bg:#07192f; --gold:#d6b25c; --text:#e8eefc; --panel:#0b1220; }
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .topbar{position:sticky;top:0;z-index:10;background:rgba(7,25,47,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .topbar-inner{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;justify-content:space-between;align-items:center}
+    .brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:inherit}
+    .logo{width:clamp(180px,16vw,280px);filter:drop-shadow(0 12px 26px rgba(0,0,0,.5))}
+    .nav a{margin-left:8px;text-decoration:none;font-weight:800;color:var(--gold);padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.06);outline:1px solid rgba(214,178,92,.22)}
+    .nav a.primary{background:rgba(255,255,255,.9);color:#0b1220;outline:none}
+    main{max-width:980px;margin:0 auto;padding:34px 18px}
+    .panel{background:var(--panel);border-radius:20px;padding:24px;outline:1px solid rgba(255,255,255,.06)}
+    h1,h2,h3{color:white}
+    p{line-height:1.65;opacity:.95}
+    .split{display:grid;grid-template-columns:1.15fr .85fr;gap:22px}
+    .split-media img{width:100%;border-radius:16px}
+    @media(max-width:900px){.split{grid-template-columns:1fr}}
+    footer{max-width:980px;margin:0 auto;padding:18px}
   </style>
 </head>
 
 <body>
-
-<header>
-  <a href="/"><img src="logo-removebg-preview.png"></a>
-  <nav>
-    <a href="/">Home</a>
-    <a href="web.html">Web</a>
-    <a href="mobile.html">Mobile</a>
-    <a href="saas.html">SaaS</a>
-  </nav>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./index.html">
+      <img class="logo" src="./logo-removebg-preview.png" alt="niro.digital" />
+      <strong>niro.digital<br><small>Servizio: SEO</small></strong>
+    </a>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="./mobile.html">Mobile</a>
+      <a class="primary" href="./seo.html">SEO</a>
+      <a href="./saas.html">SaaS</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <section>
-    <h1>SEO come infrastruttura di crescita</h1>
+<article class="panel">
+<h1>SEO strutturata per crescere nel tempo</h1>
+
+<div class="split">
+  <div>
     <p>
-      SEO tecnica, storytelling e architettura dei contenuti lavorano insieme
-      per costruire autorevolezza reale.
+      La SEO non è un intervento isolato ma un’infrastruttura di crescita.
+      Analisi tecnica, architettura dei contenuti e storytelling lavorano come un unico sistema.
     </p>
-
-    <h2>Storytelling SEO</h2>
     <p>
-      Cluster semantici, chiarezza e profondità dei contenuti.
+      Costruiamo progetti leggibili dai motori di ricerca, dalle AI e soprattutto dalle persone.
     </p>
+  </div>
+  <div class="split-media">
+    <img src="./assets/services/seo.webp" alt="SEO tecnica e crescita organica" loading="lazy">
+  </div>
+</div>
 
-    <h2>Audit e performance</h2>
-    <p>
-      Interveniamo solo su ciò che genera impatto reale.
-    </p>
+<h2>SEO come infrastruttura</h2>
+<p>
+  Struttura, semantica e architettura vengono progettate per durare nel tempo.
+</p>
 
-    <p><strong>Contattaci:</strong> info@niro.digital</p>
-  </section>
+<h2>Storytelling e autorevolezza</h2>
+<p>
+  Non articoli isolati, ma ecosistemi di contenuto coerenti e riconoscibili.
+</p>
 
-  <img class="hero" src="assets/services/seo.jpg" alt="SEO strategy">
+<h2>Audit e ottimizzazione tecnica</h2>
+<p>
+  Performance, crawlabilità, segnali tecnici e opportunità di crescita reale.
+</p>
+
+<h2>Contattaci</h2>
+<p><a href="mailto:info@niro.digital" style="color:var(--gold)">info@niro.digital</a></p>
+</article>
 </main>
 
+<footer>
+© <span id="year"></span> niro.digital
+</footer>
+
+<script>document.getElementById("year").textContent=new Date().getFullYear()</script>
 </body>
 </html>
