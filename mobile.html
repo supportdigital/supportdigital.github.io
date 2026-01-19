@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mobile — niro.digital</title>
+
+  <style>
+    body {
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:#07192f;
+      color:#e8eefc;
+    }
+
+    header {
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:28px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    header img {
+      width:220px; /* LOGO GRANDE */
+      height:auto;
+    }
+
+    nav {
+      margin-left:auto;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    nav a {
+      text-decoration:none;
+      color:#d6b25c;
+      font-weight:800;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+    }
+
+    main {
+      max-width:1200px;
+      margin:0 auto;
+      padding:40px 28px 80px;
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:40px;
+    }
+
+    h1 { margin-top:0; }
+
+    img.hero {
+      width:100%;
+      border-radius:20px;
+    }
+
+    @media(max-width:900px){
+      main { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="/"><img src="logo-removebg-preview.png" alt="niro.digital"></a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="web.html">Web</a>
+    <a href="seo.html">SEO</a>
+    <a href="saas.html">SaaS</a>
+    <a href="mailto:info@niro.digital">Email</a>
+  </nav>
+</header>
+
+<main>
+  <section>
+    <h1>Esperienze mobile progettate per funzionare davvero</h1>
+    <p>
+      Progettiamo esperienze mobile-first partendo dall’uso reale, non dal layout.
+      Flussi chiari, interazioni essenziali e performance come requisito di base.
+    </p>
+
+    <h2>Mobile-first, non adattato</h2>
+    <p>
+      Ogni progetto nasce dal contesto reale dell’utente, non da un desktop ridotto.
+    </p>
+
+    <h2>Performance e stabilità</h2>
+    <p>
+      Architetture solide, pensate per crescere senza diventare fragili.
+    </p>
+
+    <p><strong>Scrivici:</strong> info@niro.digital</p>
+  </section>
+
+  <img class="hero" src="assets/services/mobile.jpg" alt="Mobile experience">
+</main>
+
+</body>
+</html>
