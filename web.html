@@ -1,4 +1,3 @@
-<!-- /web.html -->
 <!doctype html>
 <html lang="it">
   <head>
@@ -73,21 +72,29 @@
       .brand {
         display: flex;
         align-items: center;
-        gap: 14px;
+        gap: 18px;
       }
 
-      /* ✅ LOGO PIÙ GRANDE */
+      /* ✅ LOGO GRANDE */
       .logo {
-        width: clamp(68px, 7vw, 110px);
+        width: clamp(120px, 10vw, 170px);
         height: auto;
         display: block;
-        filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.45));
+        filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.5));
       }
 
       .brand strong {
         color: white;
         letter-spacing: 0.02em;
-        font-size: 1.05rem;
+        font-size: clamp(1.15rem, 1.2vw, 1.35rem);
+        line-height: 1.1;
+      }
+
+      .brand .sub {
+        display: block;
+        margin-top: 4px;
+        opacity: 0.85;
+        font-size: 1rem;
       }
 
       .nav {
@@ -120,8 +127,8 @@
         <div class="brand">
           <img class="logo" src="./logo-removebg-preview.png" alt="niro.digital" />
           <div>
-            <strong>niro.digital</strong><br />
-            <span style="opacity: 0.85;">Servizio: Web</span>
+            <strong>niro.digital</strong>
+            <span class="sub">Servizio: Web</span>
           </div>
         </div>
 
@@ -162,27 +169,27 @@
         <h2>Una base tecnica solida e progettata per crescere</h2>
         <p>
           Un sito deve reggere nel tempo, crescere insieme al progetto e restare gestibile. Lavoriamo su codice pulito, scelte tecnologiche coerenti
-          e strutture che permettono aggiornamenti e miglioramenti senza dover rifare tutto da capo.
+          e strutture che permettono aggiornamenti e miglioramenti senza dover rifare tutto da capo. Il nostro approccio rende il sito stabile, sicuro e sostenibile nel lungo periodo.
         </p>
 
         <h2>Progettiamo siti web ottimizzati per i motori di ricerca: SEO e GEO</h2>
 
         <h3>Siti vetrina</h3>
         <p>
-          Siti di presentazione costruiti con un’architettura SEO solida, pensati per essere leggibili sia dalle persone sia dai motori di ricerca
-          — e dalle intelligenze artificiali.
+          Siti di presentazione costruiti con un’architettura SEO solida, pensati per essere leggibili sia dalle persone sia dai motori di ricerca — e dalle intelligenze artificiali.
+          Struttura delle pagine, gerarchie dei contenuti e scelte semantiche lavorano insieme per rendere chiaro il posizionamento, rafforzare l’autorevolezza e sostenere la visibilità nel tempo.
         </p>
 
         <h3>Landing page</h3>
         <p>
-          Pagine progettate per convertire senza sacrificare la qualità SEO. Ogni landing nasce da un equilibrio tra intento di ricerca, struttura del contenuto
-          e call to action.
+          Pagine progettate per convertire senza sacrificare la qualità SEO. Ogni landing nasce da un equilibrio tra intento di ricerca, struttura del contenuto e call to action,
+          così da intercettare traffico qualificato e trasformarlo in contatti reali, non in numeri vuoti.
         </p>
 
         <h3>E-commerce</h3>
         <p>
-          E-commerce costruiti con una base SEO avanzata: architettura delle categorie, gestione dei contenuti, performance e percorsi di navigazione vengono
-          progettati per supportare la crescita organica e migliorare la conversione.
+          E-commerce costruiti con una base SEO avanzata: architettura delle categorie, gestione dei contenuti, performance e percorsi di navigazione vengono progettati per supportare la crescita organica
+          e migliorare la conversione. Dalla scheda prodotto al checkout, ogni passaggio è pensato per funzionare a livello tecnico, semantico e commerciale.
         </p>
 
         <h2>Contattaci</h2>
