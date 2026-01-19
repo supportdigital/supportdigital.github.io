@@ -26,6 +26,7 @@
         color: white;
       }
 
+      /* HERO */
       .hero {
         position: relative;
         min-height: var(--hero-min-height);
@@ -119,12 +120,8 @@
         letter-spacing: 0.04em;
       }
 
-      .btn:active {
-        transform: translateY(1px);
-      }
-      .btn:hover {
-        opacity: 0.95;
-      }
+      .btn:active { transform: translateY(1px); }
+      .btn:hover { opacity: 0.95; }
 
       .btn-primary {
         background: rgba(255, 255, 255, 0.92);
@@ -148,6 +145,7 @@
         text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
       }
 
+      /* SECTIONS */
       section {
         padding: 72px 20px;
         max-width: 980px;
@@ -162,16 +160,16 @@
         background: #0b1220;
       }
 
-      .panel h2 {
-        margin: 0 0 10px;
-      }
-      .panel p {
-        margin: 0;
-        opacity: 0.92;
+      .panel h2 { margin: 0 0 10px; }
+      .panel p { margin: 0; opacity: 0.92; line-height: 1.6; }
+
+      .section-subtitle {
+        margin: 0 0 18px;
+        color: rgba(232, 238, 252, 0.86);
         line-height: 1.6;
       }
 
-      /* Card system */
+      /* Cards */
       .card {
         border-radius: 18px;
         overflow: hidden;
@@ -184,9 +182,7 @@
         background: linear-gradient(135deg, rgba(214, 178, 92, 0.18), rgba(255, 255, 255, 0.03));
       }
 
-      .card-body {
-        padding: 16px;
-      }
+      .card-body { padding: 16px; }
 
       .card-title {
         margin: 0 0 8px;
@@ -232,16 +228,9 @@
         outline: 1px solid rgba(214, 178, 92, 0.22);
       }
 
-      .card-cta:hover {
-        opacity: 0.92;
-      }
+      .card-cta:hover { opacity: 0.92; }
 
-      .card-cta[aria-disabled="true"] {
-        opacity: 0.75;
-        cursor: default;
-      }
-
-      /* ✅ SERVIZI GRID (4 cards) */
+      /* Services grid */
       .services-grid {
         margin-top: 18px;
         display: grid;
@@ -250,18 +239,14 @@
       }
 
       @media (max-width: 1024px) {
-        .services-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
+        .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       }
 
       @media (max-width: 640px) {
-        .services-grid {
-          grid-template-columns: 1fr;
-        }
+        .services-grid { grid-template-columns: 1fr; }
       }
 
-      /* PORTFOLIO GRID */
+      /* Portfolio grid */
       .portfolio-grid {
         margin-top: 18px;
         display: grid;
@@ -270,12 +255,10 @@
       }
 
       @media (max-width: 900px) {
-        .portfolio-grid {
-          grid-template-columns: 1fr;
-        }
+        .portfolio-grid { grid-template-columns: 1fr; }
       }
 
-      /* FOOTER */
+      /* Footer */
       .site-footer {
         padding: 26px 20px 46px;
         max-width: 980px;
@@ -306,83 +289,11 @@
         text-decoration: underline;
       }
 
-      .dot {
-        opacity: 0.55;
-      }
+      .dot { opacity: 0.55; }
 
-      /* NEW: subtitles + long-copy sections */
-      .section-subtitle {
-        margin: 0 0 18px;
-        color: rgba(232, 238, 252, 0.86);
-        line-height: 1.6;
-      }
-
-      .rich-copy h3,
-      .rich-copy h4 {
-        margin: 18px 0 8px;
-        color: white;
-      }
-
-      .rich-copy p {
-        margin: 0 0 12px;
-        opacity: 0.92;
-        line-height: 1.75;
-      }
-
-      .rich-copy .mini-cta {
-        margin-top: 18px;
-        display: inline-flex;
-        gap: 10px;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-
-      .rich-copy .mini-cta a {
-        color: var(--gold);
-        font-weight: 800;
-        text-decoration: none;
-      }
-
-      .rich-copy .mini-cta a:hover {
-        text-decoration: underline;
-      }
-
-      /* NEW: collapsible blocks */
-      .readmore {
-        margin-top: 14px;
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.03);
-        outline: 1px solid rgba(255, 255, 255, 0.06);
-        padding: 12px 14px;
-      }
-
-      .readmore summary {
-        list-style: none;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 10px 14px;
-        border-radius: 999px;
-        font-weight: 800;
-        color: var(--gold);
-        background: rgba(255, 255, 255, 0.06);
-        outline: 1px solid rgba(214, 178, 92, 0.22);
-        user-select: none;
-      }
-
-      .readmore summary::-webkit-details-marker {
-        display: none;
-      }
-
-      .readmore[open] summary {
-        opacity: 0.92;
-      }
-
-      .readmore .content {
-        margin-top: 14px;
-      }
+      .made-by { opacity: 0.9; }
+      .made-by a { color: var(--gold); font-weight: 800; text-decoration: none; }
+      .made-by a:hover { text-decoration: underline; opacity: 0.95; }
     </style>
   </head>
 
@@ -396,19 +307,18 @@
         <div class="center">
           <img class="brand-logo" src="./logo-removebg-preview.png" alt="niro.digital" decoding="async" />
 
-          <!-- MENU TOP -->
           <div class="actions">
             <a class="btn btn-primary" href="#servizi">Servizi</a>
             <a class="btn btn-ghost" href="#portfolio">Portfolio</a>
             <a class="btn btn-ghost" href="#contatti">Contatti</a>
           </div>
 
-          <!-- MENU DETTAGLI (scroll diretto) -->
+          <!-- IMPORTANT: questi aprono pagine reali -->
           <div class="actions actions-mini" aria-label="Dettagli Servizi">
-            <a class="btn btn-ghost btn-sm" href="#servizio-web">Web</a>
-            <a class="btn btn-ghost btn-sm" href="#servizio-mobile">Mobile</a>
-            <a class="btn btn-ghost btn-sm" href="#servizio-seo">SEO</a>
-            <a class="btn btn-ghost btn-sm" href="#servizio-saas">SaaS</a>
+            <a class="btn btn-ghost btn-sm" href="./web.html" target="_blank" rel="noopener">Web</a>
+            <a class="btn btn-ghost btn-sm" href="./mobile.html" target="_blank" rel="noopener">Mobile</a>
+            <a class="btn btn-ghost btn-sm" href="./seo.html" target="_blank" rel="noopener">SEO</a>
+            <a class="btn btn-ghost btn-sm" href="./saas.html" target="_blank" rel="noopener">SaaS</a>
           </div>
         </div>
 
@@ -427,10 +337,8 @@
             <div class="card-body">
               <h3 class="card-title">Web</h3>
               <p class="card-desc">Siti web progettati per generare risultati.</p>
-              <div class="pill-row">
-                <span class="pill">UI</span><span class="pill">SPEED</span>
-              </div>
-              <a class="card-cta" href="#servizio-web">Approfondisci</a>
+              <div class="pill-row"><span class="pill">UI</span><span class="pill">SPEED</span></div>
+              <a class="card-cta" href="./web.html" target="_blank" rel="noopener">Approfondisci</a>
             </div>
           </article>
 
@@ -439,10 +347,8 @@
             <div class="card-body">
               <h3 class="card-title">Mobile</h3>
               <p class="card-desc">Esperienze mobile-first reali.</p>
-              <div class="pill-row">
-                <span class="pill">UX</span><span class="pill">APP</span>
-              </div>
-              <a class="card-cta" href="#servizio-mobile">Approfondisci</a>
+              <div class="pill-row"><span class="pill">UX</span><span class="pill">APP</span></div>
+              <a class="card-cta" href="./mobile.html" target="_blank" rel="noopener">Approfondisci</a>
             </div>
           </article>
 
@@ -451,10 +357,8 @@
             <div class="card-body">
               <h3 class="card-title">SEO</h3>
               <p class="card-desc">Crescita organica strutturata.</p>
-              <div class="pill-row">
-                <span class="pill">TECH</span><span class="pill">GROWTH</span>
-              </div>
-              <a class="card-cta" href="#servizio-seo">Approfondisci</a>
+              <div class="pill-row"><span class="pill">TECH</span><span class="pill">GROWTH</span></div>
+              <a class="card-cta" href="./seo.html" target="_blank" rel="noopener">Approfondisci</a>
             </div>
           </article>
 
@@ -463,275 +367,14 @@
             <div class="card-body">
               <h3 class="card-title">SaaS</h3>
               <p class="card-desc">Prodotti pronti a diventare business.</p>
-              <div class="pill-row">
-                <span class="pill">MVP</span><span class="pill">B2B</span>
-              </div>
-              <a class="card-cta" href="#servizio-saas">Approfondisci</a>
+              <div class="pill-row"><span class="pill">MVP</span><span class="pill">B2B</span></div>
+              <a class="card-cta" href="./saas.html" target="_blank" rel="noopener">Approfondisci</a>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- WEB (dettaglio, collassabile) -->
-    <section id="servizio-web">
-      <div class="panel rich-copy">
-        <h2>Niro Digital: siti web progettati per generare risultati</h2>
-
-        <p>
-          Un sito web serve a una cosa molto concreta: far funzionare meglio il tuo lavoro. Portare contatti, sostenere una vendita,
-          rendere chiaro chi sei e cosa offri. Se non fa questo, è solo una vetrina costosa.
-        </p>
-
-        <p>
-          Progettiamo siti vetrina, landing ed e-commerce partendo da un principio semplice: ogni scelta deve avere un ritorno.
-          Struttura, contenuti, design e tecnologia vengono costruiti insieme, con l’obiettivo di accompagnare l’utente e portarlo
-          a compiere un’azione chiara, senza confusione e senza attriti inutili.
-        </p>
-
-        <details class="readmore">
-          <summary data-open="Chiudi" data-closed="Leggi di più">Leggi di più</summary>
-          <div class="content">
-            <h3>Architettura chiara, decisioni guidate</h3>
-            <p>
-              La progettazione parte sempre dagli obiettivi reali del progetto: contatti qualificati, richieste commerciali, vendite,
-              posizionamento. Su questa base costruiamo l’architettura delle pagine e la gerarchia dei contenuti.
-              L’utente deve capire subito dove si trova, cosa può fare e perché dovrebbe farlo.
-            </p>
-            <p>Un buon sito non chiede attenzione con effetti o animazioni, la ottiene perché è chiaro e funzionale.</p>
-
-            <h3>UX e velocità come leve commerciali</h3>
-            <p>
-              Interfacce pulite, leggibili, coerenti su desktop e mobile permettono alle persone di orientarsi senza sforzo.
-              Allo stesso modo, la velocità non è un dettaglio tecnico, ma un fattore che incide direttamente su conversioni, SEO e
-              percezione del brand.
-            </p>
-
-            <h3>Una base tecnica solida e progettata per crescere</h3>
-            <p>
-              Un sito deve reggere nel tempo, crescere insieme al progetto e restare gestibile. Lavoriamo su codice pulito, scelte
-              tecnologiche coerenti e strutture che permettono aggiornamenti e miglioramenti senza dover rifare tutto da capo.
-              Il nostro approccio rende il sito stabile, sicuro e sostenibile nel lungo periodo.
-            </p>
-
-            <h3>Progettiamo siti web ottimizzati per i motori di ricerca: SEO e GEO</h3>
-
-            <h4>Siti vetrina</h4>
-            <p>
-              Siti di presentazione costruiti con un’architettura SEO solida, pensati per essere leggibili sia dalle persone sia dai
-              motori di ricerca — e dalle intelligenze artificiali. Struttura delle pagine, gerarchie dei contenuti e scelte semantiche
-              lavorano insieme per rendere chiaro il posizionamento, rafforzare l’autorevolezza e sostenere la visibilità nel tempo.
-            </p>
-
-            <h4>Landing page</h4>
-            <p>
-              Pagine progettate per convertire senza sacrificare la qualità SEO. Ogni landing nasce da un equilibrio tra intento di
-              ricerca, struttura del contenuto e call to action, così da intercettare traffico qualificato e trasformarlo in contatti
-              reali, non in numeri vuoti.
-            </p>
-
-            <h4>E-commerce</h4>
-            <p>
-              E-commerce costruiti con una base SEO avanzata: architettura delle categorie, gestione dei contenuti, performance e percorsi
-              di navigazione vengono progettati per supportare la crescita organica e migliorare la conversione. Dalla scheda prodotto al
-              checkout, ogni passaggio è pensato per funzionare a livello tecnico, semantico e commerciale.
-            </p>
-
-            <h3>Contattaci</h3>
-            <div class="mini-cta">
-              <span>Scrivici a</span>
-              <a href="mailto:info@niro.digital">info@niro.digital</a>
-              <span>— valutiamo ogni progetto con attenzione.</span>
-            </div>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- MOBILE (dettaglio, collassabile) -->
-    <section id="servizio-mobile">
-      <div class="panel rich-copy">
-        <h2>Niro Digital: esperienze mobile progettate per funzionare davvero</h2>
-
-        <p>
-          Qualsiasi app o soluzione mobile deve risolvere un problema concreto, velocizzare un’azione, rendere semplice qualcosa che
-          altrimenti non lo sarebbe. Se costringe a pensare, fallisce.
-        </p>
-
-        <p>
-          Progettiamo esperienze mobile-first partendo dall’uso reale, non dal layout: funzionalità, flussi, interazioni e tecnologia
-          vengono costruiti insieme per permettere all’utente di arrivare subito al punto, senza attriti, senza frizioni e complessità.
-        </p>
-
-        <details class="readmore">
-          <summary data-open="Chiudi" data-closed="Leggi di più">Leggi di più</summary>
-          <div class="content">
-            <h3>Mobile-first, non mobile-adattato</h3>
-            <p>
-              Progettare per il mobile significa prendere decisioni. Spazio ridotto, attenzione limitata, contesto d’uso variabile.
-              Non si tratta di adattare un’interfaccia desktop, ma di ripensare struttura e funzioni partendo dal dispositivo che le persone
-              utilizzano di più.
-            </p>
-            <p>
-              Ogni progetto nasce considerando l’intento dell’utente, in quale momento e con quale livello di urgenza. Il risultato è
-              un’esperienza in grado di guidare l’azione in modo istantaneo.
-            </p>
-
-            <h3>Flussi chiari, interazioni essenziali</h3>
-            <p>
-              Nel mobile la UX coincide con la velocità decisionale: per questo riduciamo i passaggi, semplifichiamo le azioni ed eliminiamo
-              tutto ciò che non contribuisce all’obiettivo. Ogni tap ha un senso, ogni schermata una funzione precisa: le interfacce pulite
-              e coerenti permettono all’utente di orientarsi immediatamente.
-            </p>
-
-            <h3>Performance e stabilità come requisiti di base</h3>
-            <p>
-              Un prodotto mobile deve essere veloce, stabile e affidabile: performance, gestione delle risorse e solidità tecnica vengono
-              affrontate fin dalle prime fasi di progettazione, perché incidono direttamente sull’uso quotidiano e sulla percezione del prodotto.
-            </p>
-            <p>
-              Lavoriamo su soluzioni che restano performanti anche quando crescono, evitando architetture fragili o scorciatoie che creano problemi
-              nel tempo.
-            </p>
-
-            <h3>Soluzioni mobile progettate per crescere</h3>
-            <p>
-              Ogni progetto mobile viene pensato come un sistema evolutivo. Funzionalità, integrazioni e sviluppi futuri vengono considerati fin
-              dall’inizio, per evitare blocchi e ripensamenti costosi.
-            </p>
-            <p>Il nostro approccio rende il prodotto solido, gestibile e sostenibile nel lungo periodo.</p>
-
-            <h3>Che tipo di soluzioni mobile realizziamo</h3>
-
-            <h4>App mobile</h4>
-            <p>
-              Applicazioni progettate partendo dai flussi d’uso reali. Funzionalità essenziali, interazioni chiare e un’architettura che supporta
-              evoluzioni future senza compromettere la stabilità.
-            </p>
-
-            <h4>Web app e soluzioni ibride</h4>
-            <p>
-              Prodotti accessibili da mobile progettati per offrire un’esperienza fluida e coerente, mantenendo alte performance e semplicità d’uso
-              anche su dispositivi diversi.
-            </p>
-
-            <h4>Interfacce per prodotti digitali</h4>
-            <p>
-              UX e UI per piattaforme e servizi digitali, con particolare attenzione alla chiarezza dei flussi e alla riduzione della complessità
-              operativa.
-            </p>
-
-            <h3>Contattaci</h3>
-            <div class="mini-cta">
-              <span>Scrivici a</span>
-              <a href="mailto:info@niro.digital">info@niro.digital</a>
-              <span>— valutiamo ogni progetto con attenzione.</span>
-            </div>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- SEO (dettaglio, collassabile) -->
-    <section id="servizio-seo">
-      <div class="panel rich-copy">
-        <h2>Niro Digital: SEO storytelling ottimizzata anche in ambito GEO</h2>
-
-        <p>
-          La SEO serve a una cosa molto concreta: portare traffico qualificato e trasformarlo in valore. Lavoriamo sulla crescita organica
-          partendo da una visione strutturata. Analisi tecnica, architettura dei contenuti, strategia semantica e storytelling SEO vengono
-          costruiti come parti di un unico sistema.
-        </p>
-
-        <p>
-          L’obiettivo è rendere ogni nostro progetto leggibile dai motori di ricerca, dalle intelligenze artificiali e, soprattutto, dalle persone.
-        </p>
-
-        <details class="readmore">
-          <summary data-open="Chiudi" data-closed="Leggi di più">Leggi di più</summary>
-          <div class="content">
-            <h3>SEO come infrastruttura, non come intervento isolato</h3>
-            <p>
-              La strategia SEO si determina dal contesto: mercato, posizionamento, obiettivi reali. Da qui sviluppiamo una visione in grado di ottimizzare
-              sia la struttura del sito, sia i singoli contenuti e i cluster di autorevolezza tecnica.
-            </p>
-            <p>
-              La SEO viene trattata come un’infrastruttura di crescita, essenziale per sostenere il progetto nel tempo e accompagnarne l’evoluzione.
-              Il nostro approccio permette una presenza organica solida, coerente e riconoscibile con il brand.
-            </p>
-
-            <h3>Storytelling SEO e autorevolezza</h3>
-            <p>
-              I motori di ricerca premiano la chiarezza, la coerenza e la competenza. Per questo lavoriamo sullo storytelling SEO: non una sequenza di articoli
-              scollegati, ma un cluster di contenuti ben organizzati per raccontare il brand, chiarirne il ruolo e rafforzarne l'identità.
-            </p>
-            <p>
-              Struttura editoriale, scelte semantiche e profondità dei contenuti sono elementi imprescindibili per costruire autorevolezza e rendere ciascun sito
-              una fonte autorevole nel proprio ambito.
-            </p>
-
-            <h3>Ottimizzazione tecnica e audit avanzati</h3>
-            <p>
-              La base tecnica resta centrale: audit approfonditi, analisi dell’architettura, performance, crawlability e coerenza dei segnali permettono di individuare
-              criticità e opportunità di crescita.
-            </p>
-            <p>
-              Interveniamo su tutto ciò che genera un impatto reale. La SEO tecnica supporta la strategia e ne amplifica gli effetti, soprattutto nei progetti complessi
-              o ad alta competizione.
-            </p>
-
-            <h3>SEO come leva di crescita</h3>
-            <p>
-              La SEO viene spesso trattata come una disciplina a parte. Noi la integriamo nei processi di crescita del progetto. Contenuti, prodotto, comunicazione e
-              strategia digitale dialogano tra loro, permettendo al traffico di agire in veste di acceleratore dei risultati.
-            </p>
-
-            <h3>Formazione SEO: trasferire metodo e visione</h3>
-            <p>
-              Accanto ai progetti operativi, Niro Digital si occupa anche di formazione SEO. Organizziamo ogni mese progetti formativi, workshop e affiancamenti pensati
-              per team, professionisti e aziende che vogliono acquisire competenze solide e una visione strategica della disciplina.
-            </p>
-            <p>
-              La formazione lavora su metodo, struttura e capacità di lettura dei progetti digitali. Il nostro obiettivo in questo caso è rendere i nostri clienti autonomi,
-              consapevoli e in grado di prendere decisioni corrette nel tempo. Rimanendo ovviamente a disposizione per qualsiasi affiancamento.
-            </p>
-
-            <h3>Contattaci</h3>
-            <div class="mini-cta">
-              <span>Scrivici a</span>
-              <a href="mailto:info@niro.digital">info@niro.digital</a>
-              <span>— valutiamo ogni progetto con attenzione.</span>
-            </div>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- SAAS (placeholder, collassabile pronto) -->
-    <section id="servizio-saas">
-      <div class="panel rich-copy">
-        <h2>SaaS</h2>
-        <p>Prodotti pronti a diventare business. Prototipi, MVP e dashboard orientati a decisioni e scalabilità.</p>
-        <p>Meno teoria, più prodotto.</p>
-
-        <details class="readmore">
-          <summary data-open="Chiudi" data-closed="Leggi di più">Leggi di più</summary>
-          <div class="content">
-            <p>
-              Qui inseriremo il testo completo SaaS quando me lo mandi (stesso stile premium di Web/Mobile/SEO).
-            </p>
-            <h3>Contattaci</h3>
-            <div class="mini-cta">
-              <span>Scrivici a</span>
-              <a href="mailto:info@niro.digital">info@niro.digital</a>
-              <span>— valutiamo ogni progetto con attenzione.</span>
-            </div>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <!-- PORTFOLIO (lasciato invariato) -->
     <section id="portfolio">
       <div class="panel">
         <h2>Portfolio</h2>
@@ -743,9 +386,7 @@
             <div class="card-body">
               <h3 class="card-title">Progetto 01</h3>
               <p class="card-desc">Landing / sito vetrina (placeholder).</p>
-              <div class="pill-row">
-                <span class="pill">Web</span><span class="pill">UI</span>
-              </div>
+              <div class="pill-row"><span class="pill">Web</span><span class="pill">UI</span></div>
               <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">In arrivo</a>
             </div>
           </article>
@@ -755,9 +396,7 @@
             <div class="card-body">
               <h3 class="card-title">Progetto 02</h3>
               <p class="card-desc">SEO / performance (placeholder).</p>
-              <div class="pill-row">
-                <span class="pill">SEO</span><span class="pill">Speed</span>
-              </div>
+              <div class="pill-row"><span class="pill">SEO</span><span class="pill">Speed</span></div>
               <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">In arrivo</a>
             </div>
           </article>
@@ -767,9 +406,7 @@
             <div class="card-body">
               <h3 class="card-title">Progetto 03</h3>
               <p class="card-desc">SaaS / app (placeholder).</p>
-              <div class="pill-row">
-                <span class="pill">SaaS</span><span class="pill">App</span>
-              </div>
+              <div class="pill-row"><span class="pill">SaaS</span><span class="pill">App</span></div>
               <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">In arrivo</a>
             </div>
           </article>
@@ -792,6 +429,8 @@
         <span>© <span id="year"></span> niro.digital</span>
         <span class="dot">•</span>
         <a href="mailto:info@niro.digital">info@niro.digital</a>
+        <span class="dot">•</span>
+        <span class="made-by">Made by <a href="https://niro.digital" rel="noopener">niro.digital</a></span>
       </div>
     </footer>
 
@@ -802,21 +441,6 @@
       window.addEventListener("load", () => {
         const yearEl = document.getElementById("year");
         if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-        // Toggle summary label (Leggi di più / Chiudi)
-        document.querySelectorAll("details.readmore").forEach((d) => {
-          const s = d.querySelector("summary");
-          if (!s) return;
-
-          const update = () => {
-            const openText = s.getAttribute("data-open") || "Chiudi";
-            const closedText = s.getAttribute("data-closed") || "Leggi di più";
-            s.textContent = d.open ? openText : closedText;
-          };
-
-          d.addEventListener("toggle", update);
-          update();
-        });
 
         const el = document.querySelector("#hero-vanta");
         if (!el || !window.THREE || !window.VANTA?.BIRDS) return;
