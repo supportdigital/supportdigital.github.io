@@ -1,28 +1,117 @@
-<h1>Esperienze mobile progettate per l’uso reale</h1>
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mobile — niro.digital</title>
+  <meta name="description" content="Esperienze mobile-first progettate per l’uso reale. App performanti, affidabili e pensate per crescere." />
+  <link rel="canonical" href="https://niro.digital/mobile.html" />
 
-<p>
-  Sviluppiamo applicazioni mobile-first partendo dai vincoli concreti del contesto d’uso:
-  device diversi, risorse limitate, condizioni di rete non ideali.
-</p>
+  <style>
+    :root { --bg:#07192f; --gold:#d6b25c; --text:#e8eefc; --panel:#0b1220; }
+    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
 
-<p>
-  Il mobile-first è una scelta architetturale, non un adattamento.
-  Logica applicativa, gestione dello stato e interazioni nascono dal mobile, fin dall’inizio.
-</p>
+    .topbar{position:sticky;top:0;z-index:10;background:rgba(7,25,47,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .topbar-inner{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
 
-<h2>Mobile-first, per definizione</h2>
-<p>
-  Ogni decisione progettuale è guidata dall’utilizzo reale, non dal layout.
-</p>
+    .brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:inherit}
+    .logo{width:clamp(180px,16vw,280px);filter:drop-shadow(0 12px 26px rgba(0,0,0,.5))}
+    .brand strong{color:#fff;font-size:1.3rem}
+    .sub{opacity:.85}
 
-<h2>Performance e affidabilità</h2>
-<p>
-  Tempi di risposta prevedibili, consumo delle risorse sotto controllo e
-  comportamento stabile in produzione.
-</p>
+    .nav a{margin-left:8px;text-decoration:none;font-weight:800;color:var(--gold);padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.06);outline:1px solid rgba(214,178,92,.22)}
+    .nav a.primary{background:rgba(255,255,255,.92);color:#0b1220}
 
-<h2>Progettate per evolvere</h2>
-<p>
-  Architetture pensate per crescere mantenendo manutenibilità,
-  stabilità e controllo della complessità.
-</p>
+    main{max-width:980px;margin:0 auto;padding:36px 18px}
+    .panel{background:var(--panel);border-radius:20px;padding:26px;outline:1px solid rgba(255,255,255,.06)}
+
+    h1{color:#fff;font-size:2.1rem;margin-top:0}
+    h2{color:#fff;margin-top:28px}
+    p{line-height:1.65;opacity:.95}
+
+    .split{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start;margin:18px 0}
+    .split-media{border-radius:16px;overflow:hidden;outline:1px solid rgba(255,255,255,.08)}
+    .split-media img{width:100%;height:auto;display:block}
+
+    @media(max-width:900px){
+      .split{grid-template-columns:1fr}
+      .logo{width:190px}
+    }
+
+    footer{max-width:980px;margin:0 auto;padding:0 18px 40px}
+    .foot{margin-top:18px;padding:14px;border-radius:16px;background:rgba(255,255,255,.04);display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .foot a{color:var(--gold);font-weight:900;text-decoration:none}
+  </style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="./index.html">
+      <img class="logo" src="./logo-removebg-preview.png" alt="niro.digital">
+      <div>
+        <strong>niro.digital</strong>
+        <div class="sub">Servizio: Mobile</div>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a class="primary" href="./mobile.html">Mobile</a>
+      <a href="./seo.html">SEO</a>
+      <a href="./saas.html">SaaS</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <article class="panel">
+    <h1>Esperienze mobile progettate per l’uso reale</h1>
+
+    <div class="split">
+      <div>
+        <p>
+          Sviluppiamo applicazioni mobile-first partendo dai vincoli concreti del contesto d’uso:
+          device diversi, risorse limitate, condizioni di rete non ideali.
+        </p>
+
+        <p>
+          Il mobile-first è una scelta architetturale, non un adattamento.
+          Logica applicativa, gestione dello stato e interazioni nascono dal mobile, fin dall’inizio.
+        </p>
+      </div>
+
+      <div class="split-media">
+        <img src="./assets/services/mobile.webp"
+             alt="Esperienze mobile-first"
+             loading="lazy"
+             width="1536" height="1024">
+      </div>
+    </div>
+
+    <h2>Mobile-first, per definizione</h2>
+    <p>Ogni decisione progettuale è guidata dall’utilizzo reale, non dal layout.</p>
+
+    <h2>Performance e affidabilità</h2>
+    <p>Tempi di risposta prevedibili, risorse sotto controllo e comportamento stabile in produzione.</p>
+
+    <h2>Progettate per evolvere</h2>
+    <p>Architetture pensate per crescere mantenendo manutenibilità, stabilità e controllo della complessità.</p>
+
+    <p><strong>Scrivici:</strong> <a href="mailto:info@niro.digital" style="color:var(--gold)">info@niro.digital</a></p>
+  </article>
+</main>
+
+<footer>
+  <div class="foot">
+    © <span id="year"></span> niro.digital • Made by niro.digital
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
