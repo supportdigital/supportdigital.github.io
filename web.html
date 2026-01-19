@@ -1,0 +1,166 @@
+<!-- /web.html -->
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Web — niro.digital</title>
+    <meta name="description" content="Siti web progettati per generare risultati: siti vetrina, landing ed e-commerce su UX, velocità e solidità tecnica." />
+    <link rel="canonical" href="https://niro.digital/web.html" />
+    <style>
+      :root { --bg: #07192f; --gold: #d6b25c; --text: #e8eefc; --panel:#0b1220; --offset: 90px; }
+      html { scroll-behavior: smooth; scroll-padding-top: var(--offset); }
+      body { margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background: var(--bg); color: var(--text); }
+
+      .topbar { position: sticky; top: 0; z-index: 10; background: rgba(7,25,47,.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.06); }
+      .topbar-inner { max-width: 1100px; margin: 0 auto; padding: 14px 18px; display:flex; align-items:center; justify-content:space-between; gap: 14px; }
+
+      .brand { display:flex; align-items:center; gap: 18px; text-decoration:none; color: inherit; }
+      .logo { width: clamp(180px, 16vw, 280px); height:auto; display:block; filter: drop-shadow(0 12px 26px rgba(0,0,0,.5)); }
+      .brand strong { display:block; color:white; letter-spacing:.02em; font-size: clamp(1.15rem, 1.2vw, 1.35rem); line-height:1.1; }
+      .brand .sub { display:block; margin-top:4px; opacity:.85; }
+
+      .nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
+      .nav a { text-decoration:none; font-weight:800; color: var(--gold); padding:10px 14px; border-radius:999px; background: rgba(255,255,255,.06); outline: 1px solid rgba(214,178,92,.22); }
+      .nav a:hover { opacity:.95; }
+      .nav a.primary { background: rgba(255,255,255,.9); color:#0b1220; outline:none; }
+
+      main { max-width: 980px; margin: 0 auto; padding: 34px 18px 46px; }
+      .panel { background: var(--panel); border-radius: 20px; padding: 24px; outline: 1px solid rgba(255,255,255,.06); }
+      h1 { margin: 0 0 12px; color:white; font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
+      h2 { margin: 22px 0 10px; color:white; font-size: 1.25rem; }
+      h3 { margin: 18px 0 8px; color:white; font-size: 1.05rem; }
+      p { margin: 0 0 12px; line-height: 1.65; opacity: .95; }
+
+      /* Split layout: testo + immagine */
+      .split { display:grid; grid-template-columns: 1.15fr .85fr; gap: 22px; align-items:start; margin: 10px 0 22px; }
+      .split.reverse { grid-template-columns: .85fr 1.15fr; }
+      .split.reverse .split-media { order: -1; }
+      .split-media { border-radius: 16px; overflow:hidden; outline:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); }
+      .split-media img { width:100%; height:auto; display:block; }
+      @media (max-width: 900px) {
+        .split, .split.reverse { grid-template-columns: 1fr; }
+        .split.reverse .split-media { order: 0; }
+        .logo { width: 190px; }
+      }
+
+      .cta { margin-top: 18px; display:flex; gap: 12px; flex-wrap: wrap; }
+      .btn { display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding: 12px 16px; font-weight: 900; text-decoration:none; }
+      .btn.primary { background: rgba(255,255,255,.92); color:#0b1220; }
+      .btn.ghost { background: rgba(255,255,255,.08); color: var(--gold); outline:1px solid rgba(214,178,92,.25); }
+
+      footer { max-width: 980px; margin: 0 auto; padding: 0 18px 46px; }
+      .foot { margin-top: 18px; border-radius: 16px; padding: 14px 16px; background: rgba(255,255,255,.04); outline:1px solid rgba(255,255,255,.06); display:flex; gap:10px; flex-wrap:wrap; justify-content:center; align-items:center; }
+      .foot a { color: var(--gold); font-weight: 900; text-decoration:none; }
+      .dot { opacity:.6; }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./index.html" aria-label="Torna alla Home">
+          <img class="logo" src="./logo-removebg-preview.png" alt="niro.digital" decoding="async" />
+          <div>
+            <strong>niro.digital</strong>
+            <span class="sub">Servizio: Web</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Navigazione servizi">
+          <a class="primary" href="./index.html">Home</a>
+          <a href="./mobile.html">Mobile</a>
+          <a href="./seo.html">SEO</a>
+          <a href="./saas.html">SaaS</a>
+          <a href="mailto:info@niro.digital">Email</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <article class="panel">
+        <h1>Niro Digital: siti web progettati per generare risultati</h1>
+
+        <div class="split">
+          <div class="split-text">
+            <p>
+              Un sito web serve a una cosa molto concreta: far funzionare meglio il tuo lavoro. Portare contatti,
+              sostenere una vendita, rendere chiaro chi sei e cosa offri. Se non fa questo, è solo una vetrina costosa.
+            </p>
+            <p>
+              Progettiamo siti vetrina, landing ed e-commerce partendo da un principio semplice: ogni scelta deve avere
+              un ritorno. Struttura, contenuti, design e tecnologia vengono costruiti insieme, con l’obiettivo di
+              accompagnare l’utente e portarlo a compiere un’azione chiara, senza confusione e senza attriti inutili.
+            </p>
+          </div>
+
+          <figure class="split-media">
+            <img src="./assets/services/web.webp" alt="Siti web: UX, velocità e solidità tecnica" loading="lazy" decoding="async" width="1536" height="1024" />
+          </figure>
+        </div>
+
+        <h2>Architettura chiara, decisioni guidate</h2>
+        <p>
+          La progettazione parte sempre dagli obiettivi reali del progetto: contatti qualificati, richieste commerciali,
+          vendite, posizionamento. Su questa base costruiamo l’architettura delle pagine e la gerarchia dei contenuti.
+          L’utente deve capire subito dove si trova, cosa può fare e perché dovrebbe farlo.
+        </p>
+        <p>Un buon sito non chiede attenzione con effetti o animazioni, la ottiene perché è chiaro e funzionale.</p>
+
+        <h2>UX e velocità come leve commerciali</h2>
+        <p>
+          Interfacce pulite, leggibili, coerenti su desktop e mobile permettono alle persone di orientarsi senza sforzo.
+          Allo stesso modo, la velocità non è un dettaglio tecnico, ma un fattore che incide direttamente su conversioni,
+          SEO e percezione del brand.
+        </p>
+
+        <h2>Una base tecnica solida e progettata per crescere</h2>
+        <p>
+          Un sito deve reggere nel tempo, crescere insieme al progetto e restare gestibile. Lavoriamo su codice pulito,
+          scelte tecnologiche coerenti e strutture che permettono aggiornamenti e miglioramenti senza dover rifare tutto
+          da capo.
+        </p>
+
+        <h2>Progettiamo siti web ottimizzati per i motori di ricerca: SEO e GEO</h2>
+        <h3>Siti vetrina</h3>
+        <p>
+          Siti di presentazione costruiti con un’architettura SEO solida, pensati per essere leggibili sia dalle persone
+          sia dai motori di ricerca — e dalle intelligenze artificiali.
+        </p>
+        <h3>Landing page</h3>
+        <p>
+          Pagine progettate per convertire senza sacrificare la qualità SEO. Ogni landing nasce da un equilibrio tra
+          intento di ricerca, struttura del contenuto e call to action.
+        </p>
+        <h3>E-commerce</h3>
+        <p>
+          E-commerce costruiti con una base SEO avanzata: architettura delle categorie, gestione dei contenuti,
+          performance e percorsi di navigazione progettati per supportare crescita organica e conversione.
+        </p>
+
+        <h2>Contattaci</h2>
+        <p>Scrivici a <a href="mailto:info@niro.digital" style="color:var(--gold);font-weight:900;text-decoration:none;">info@niro.digital</a>. Valutiamo ogni progetto con attenzione.</p>
+
+        <div class="cta">
+          <a class="btn primary" href="mailto:info@niro.digital?subject=Richiesta%20Web%20-%20niro.digital">Richiedi una consulenza</a>
+          <a class="btn ghost" href="./index.html#servizi">Torna ai servizi</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="foot">
+        <span>© <span id="year"></span> niro.digital</span>
+        <span class="dot">•</span>
+        <span>Made by <a href="./index.html">niro.digital</a></span>
+        <span class="dot">•</span>
+        <a href="mailto:info@niro.digital">info@niro.digital</a>
+      </div>
+    </footer>
+
+    <script>
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
