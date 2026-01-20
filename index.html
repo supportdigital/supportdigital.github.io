@@ -182,6 +182,14 @@
         background: linear-gradient(135deg, rgba(214, 178, 92, 0.18), rgba(255, 255, 255, 0.03));
       }
 
+      /* ✅ IMMAGINI NELLE CARD */
+      .thumb img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+        display: block;
+      }
+
       .card-body { padding: 16px; }
 
       .card-title {
@@ -313,7 +321,6 @@
             <a class="btn btn-ghost" href="#contatti">Contatti</a>
           </div>
 
-          <!-- IMPORTANT: questi aprono pagine reali -->
           <div class="actions actions-mini" aria-label="Dettagli Servizi">
             <a class="btn btn-ghost btn-sm" href="./web.html" target="_blank" rel="noopener">Web</a>
             <a class="btn btn-ghost btn-sm" href="./mobile.html" target="_blank" rel="noopener">Mobile</a>
@@ -333,7 +340,9 @@
 
         <div class="services-grid">
           <article class="card">
-            <div class="thumb" aria-hidden="true"></div>
+            <div class="thumb" aria-hidden="true">
+              <img src="./assets/cards/web_card.webp" alt="Servizio Web" loading="lazy" decoding="async" />
+            </div>
             <div class="card-body">
               <h3 class="card-title">Web</h3>
               <p class="card-desc">Siti web progettati per generare risultati.</p>
@@ -343,7 +352,9 @@
           </article>
 
           <article class="card">
-            <div class="thumb" aria-hidden="true"></div>
+            <div class="thumb" aria-hidden="true">
+              <img src="./assets/cards/mobile_card.webp" alt="Servizio Mobile" loading="lazy" decoding="async" />
+            </div>
             <div class="card-body">
               <h3 class="card-title">Mobile</h3>
               <p class="card-desc">Esperienze mobile-first reali.</p>
@@ -353,7 +364,9 @@
           </article>
 
           <article class="card">
-            <div class="thumb" aria-hidden="true"></div>
+            <div class="thumb" aria-hidden="true">
+              <img src="./assets/cards/seo_card.webp" alt="Servizio SEO" loading="lazy" decoding="async" />
+            </div>
             <div class="card-body">
               <h3 class="card-title">SEO</h3>
               <p class="card-desc">Crescita organica strutturata.</p>
@@ -363,7 +376,9 @@
           </article>
 
           <article class="card">
-            <div class="thumb" aria-hidden="true"></div>
+            <div class="thumb" aria-hidden="true">
+              <img src="./assets/cards/saas_card.webp" alt="Servizio SaaS" loading="lazy" decoding="async" />
+            </div>
             <div class="card-body">
               <h3 class="card-title">SaaS</h3>
               <p class="card-desc">Prodotti pronti a diventare business.</p>
