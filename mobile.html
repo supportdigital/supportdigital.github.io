@@ -1,117 +1,356 @@
 <!doctype html>
 <html lang="it">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Mobile — niro.digital</title>
-  <meta name="description" content="Esperienze mobile-first progettate per l’uso reale. App performanti, affidabili e pensate per crescere." />
-  <link rel="canonical" href="https://niro.digital/mobile.html" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mobile — niro.digital</title>
+    <meta
+      name="description"
+      content="Esperienze mobile-first progettate per l’uso reale: performance, affidabilità e architetture scalabili."
+    />
+    <link rel="canonical" href="https://niro.digital/mobile.html" />
 
-  <style>
-    :root { --bg:#07192f; --gold:#d6b25c; --text:#e8eefc; --panel:#0b1220; }
-    body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
+    <style>
+      :root {
+        --bg: #07192f;
+        --panel: #0b1220;
+        --gold: #d6b25c;
+        --text: #e8eefc;
+        --muted: rgba(232, 238, 252, 0.78);
+        --border: rgba(255, 255, 255, 0.08);
+      }
 
-    .topbar{position:sticky;top:0;z-index:10;background:rgba(7,25,47,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .topbar-inner{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
 
-    .brand{display:flex;align-items:center;gap:18px;text-decoration:none;color:inherit}
-    .logo{width:clamp(180px,16vw,280px);filter:drop-shadow(0 12px 26px rgba(0,0,0,.5))}
-    .brand strong{color:#fff;font-size:1.3rem}
-    .sub{opacity:.85}
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(7, 25, 47, 0.92);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
 
-    .nav a{margin-left:8px;text-decoration:none;font-weight:800;color:var(--gold);padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.06);outline:1px solid rgba(214,178,92,.22)}
-    .nav a.primary{background:rgba(255,255,255,.92);color:#0b1220}
+      .topbar-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 14px 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
 
-    main{max-width:980px;margin:0 auto;padding:36px 18px}
-    .panel{background:var(--panel);border-radius:20px;padding:26px;outline:1px solid rgba(255,255,255,.06)}
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-decoration: none;
+        color: inherit;
+        min-width: 240px;
+      }
 
-    h1{color:#fff;font-size:2.1rem;margin-top:0}
-    h2{color:#fff;margin-top:28px}
-    p{line-height:1.65;opacity:.95}
+      .logo {
+        width: clamp(180px, 16vw, 280px);
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.5));
+      }
 
-    .split{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start;margin:18px 0}
-    .split-media{border-radius:16px;overflow:hidden;outline:1px solid rgba(255,255,255,.08)}
-    .split-media img{width:100%;height:auto;display:block}
+      .brand strong {
+        display: block;
+        color: white;
+        letter-spacing: 0.02em;
+        font-size: clamp(1.1rem, 1.2vw, 1.35rem);
+        line-height: 1.1;
+      }
 
-    @media(max-width:900px){
-      .split{grid-template-columns:1fr}
-      .logo{width:190px}
-    }
+      .brand .sub {
+        display: block;
+        margin-top: 4px;
+        opacity: 0.85;
+        color: var(--muted);
+      }
 
-    footer{max-width:980px;margin:0 auto;padding:0 18px 40px}
-    .foot{margin-top:18px;padding:14px;border-radius:16px;background:rgba(255,255,255,.04);display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-    .foot a{color:var(--gold);font-weight:900;text-decoration:none}
-  </style>
-</head>
+      .nav {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
 
-<body>
+      .nav a {
+        text-decoration: none;
+        font-weight: 900;
+        color: var(--gold);
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        outline: 1px solid rgba(214, 178, 92, 0.22);
+        white-space: nowrap;
+      }
 
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="./index.html">
-      <img class="logo" src="./logo-removebg-preview.png" alt="niro.digital">
-      <div>
-        <strong>niro.digital</strong>
-        <div class="sub">Servizio: Mobile</div>
+      .nav a:hover {
+        opacity: 0.95;
+      }
+
+      .nav a.primary {
+        background: rgba(255, 255, 255, 0.92);
+        color: #0b1220;
+        outline: none;
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 18px 56px;
+      }
+
+      .panel {
+        background: radial-gradient(
+            1200px 600px at 20% 10%,
+            rgba(255, 255, 255, 0.06),
+            rgba(0, 0, 0, 0)
+          ),
+          var(--panel);
+        border-radius: 24px;
+        padding: 46px;
+        outline: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        color: white;
+        font-size: clamp(1.9rem, 3vw, 2.45rem);
+        letter-spacing: -0.01em;
+      }
+
+      h2 {
+        margin: 22px 0 10px;
+        color: white;
+        font-size: 1.25rem;
+      }
+
+      .panel p,
+      .panel li {
+        margin: 0 0 12px;
+        line-height: 1.68;
+        color: var(--text);
+        opacity: 0.95;
+      }
+
+      .split {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 48px;
+        align-items: center;
+        margin: 34px 0 34px;
+      }
+
+      .split-media {
+        border-radius: 18px;
+        overflow: hidden;
+        outline: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .split-media img {
+        width: 100%;
+        height: auto;
+        display: block;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+      }
+
+      .cta {
+        margin-top: 26px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 12px 18px;
+        font-weight: 900;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .btn.primary {
+        background: rgba(255, 255, 255, 0.92);
+        color: #0b1220;
+      }
+
+      .btn.ghost {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--gold);
+        outline: 1px solid rgba(214, 178, 92, 0.25);
+      }
+
+      footer {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 18px 56px;
+      }
+
+      .foot {
+        margin-top: 18px;
+        border-radius: 16px;
+        padding: 14px 16px;
+        background: rgba(255, 255, 255, 0.04);
+        outline: 1px solid rgba(255, 255, 255, 0.06);
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        color: var(--muted);
+      }
+
+      .foot a {
+        color: var(--gold);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .dot {
+        opacity: 0.55;
+      }
+
+      @media (max-width: 980px) {
+        .topbar-inner {
+          align-items: flex-start;
+        }
+        .brand {
+          min-width: 0;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .split {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+        .panel {
+          padding: 28px;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .nav {
+          justify-content: center;
+        }
+
+        .cta {
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        .cta .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="./index.html" aria-label="Torna alla Home">
+          <img class="logo" src="./logo-removebg-preview.png" alt="niro.digital" decoding="async" />
+          <div>
+            <strong>niro.digital</strong>
+            <span class="sub">Servizio: Mobile</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="Navigazione servizi">
+          <a class="primary" href="./index.html">Home</a>
+          <a href="./web.html">Web</a>
+          <a href="./seo.html">SEO</a>
+          <a href="./saas.html">SaaS</a>
+          <a href="mailto:info@niro.digital">Email</a>
+        </nav>
       </div>
-    </a>
+    </header>
 
-    <nav class="nav">
-      <a href="./index.html">Home</a>
-      <a class="primary" href="./mobile.html">Mobile</a>
-      <a href="./seo.html">SEO</a>
-      <a href="./saas.html">SaaS</a>
-    </nav>
-  </div>
-</header>
+    <main>
+      <article class="panel">
+        <h1>Esperienze mobile progettate per l’uso reale</h1>
 
-<main>
-  <article class="panel">
-    <h1>Esperienze mobile progettate per l’uso reale</h1>
+        <div class="split">
+          <div>
+            <p>
+              Sviluppiamo applicazioni mobile-first partendo dai vincoli concreti del contesto d’uso: device diversi,
+              risorse limitate, condizioni di rete non ideali.
+            </p>
+            <p>
+              Il mobile-first è una scelta architetturale, non un adattamento. Logica applicativa, gestione dello stato e
+              interazioni nascono dal mobile, fin dall’inizio.
+            </p>
+          </div>
 
-    <div class="split">
-      <div>
+          <div class="split-media">
+            <img
+              src="./assets/services/mobile.webp"
+              alt="Esperienze mobile-first e app"
+              loading="lazy"
+              decoding="async"
+              width="1536"
+              height="1024"
+            />
+          </div>
+        </div>
+
+        <h2>Mobile-first, per definizione</h2>
+        <p>Ogni decisione progettuale è guidata dall’utilizzo reale, non dal layout.</p>
+
+        <h2>Performance e affidabilità</h2>
+        <p>Tempi di risposta prevedibili, consumo delle risorse sotto controllo e comportamento stabile in produzione.</p>
+
+        <h2>Progettate per evolvere</h2>
+        <p>Architetture pensate per crescere mantenendo manutenibilità, stabilità e controllo della complessità.</p>
+
+        <h2>Contattaci</h2>
         <p>
-          Sviluppiamo applicazioni mobile-first partendo dai vincoli concreti del contesto d’uso:
-          device diversi, risorse limitate, condizioni di rete non ideali.
+          Scrivici a
+          <a href="mailto:info@niro.digital" style="color: var(--gold); font-weight: 900; text-decoration: none"
+            >info@niro.digital</a
+          >. Valutiamo ogni progetto con attenzione.
         </p>
 
-        <p>
-          Il mobile-first è una scelta architetturale, non un adattamento.
-          Logica applicativa, gestione dello stato e interazioni nascono dal mobile, fin dall’inizio.
-        </p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:info@niro.digital?subject=Richiesta%20Mobile%20-%20niro.digital"
+            >Richiedi una consulenza</a
+          >
+          <a class="btn ghost" href="./index.html#servizi">Torna ai servizi</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <div class="foot">
+        <span>© <span id="year"></span> niro.digital</span>
+        <span class="dot">•</span>
+        <span>Made by <a href="./index.html">niro.digital</a></span>
+        <span class="dot">•</span>
+        <a href="mailto:info@niro.digital">info@niro.digital</a>
       </div>
+    </footer>
 
-      <div class="split-media">
-        <img src="./assets/services/mobile.webp"
-             alt="Esperienze mobile-first"
-             loading="lazy"
-             width="1536" height="1024">
-      </div>
-    </div>
-
-    <h2>Mobile-first, per definizione</h2>
-    <p>Ogni decisione progettuale è guidata dall’utilizzo reale, non dal layout.</p>
-
-    <h2>Performance e affidabilità</h2>
-    <p>Tempi di risposta prevedibili, risorse sotto controllo e comportamento stabile in produzione.</p>
-
-    <h2>Progettate per evolvere</h2>
-    <p>Architetture pensate per crescere mantenendo manutenibilità, stabilità e controllo della complessità.</p>
-
-    <p><strong>Scrivici:</strong> <a href="mailto:info@niro.digital" style="color:var(--gold)">info@niro.digital</a></p>
-  </article>
-</main>
-
-<footer>
-  <div class="foot">
-    © <span id="year"></span> niro.digital • Made by niro.digital
-  </div>
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-</body>
+    <script>
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
