@@ -26,13 +26,12 @@
       h2 { margin: 22px 0 10px; color:white; font-size: 1.25rem; }
       h3 { margin: 18px 0 8px; color:white; font-size: 1.05rem; }
       p { margin: 0 0 12px; line-height: 1.65; opacity: .95; }
-      /* Split layout: testo + media (ora supporta anche video) */
       .split { display:grid; grid-template-columns: 1.15fr .85fr; gap: 22px; align-items:start; margin: 10px 0 22px; }
       .split.reverse { grid-template-columns: .85fr 1.15fr; }
       .split.reverse .split-media { order: -1; }
       .split-media { border-radius: 16px; overflow:hidden; outline:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); }
       .split-media img, .split-media video { width:100%; height:auto; display:block; }
-      .video-credit { font-size: 0.85rem; opacity: 0.7; text-align: center; margin-top: 8px; }
+      .video-credit { font-size: 0.85rem; opacity: 0.7; text-align: center; margin-top: 8px; display:block; }
       @media (max-width: 900px) {
         .split, .split.reverse { grid-template-columns: 1fr; }
         .split.reverse .split-media { order: 0; }
@@ -83,7 +82,17 @@
             </p>
           </div>
           <figure class="split-media">
-            <img src="./assets/services/web.webp" alt="Siti web: UX, velocità e solidità tecnica" loading="lazy" decoding="async" width="1536" height="1024" />
+            <video 
+              id="grokVideo" 
+              muted 
+              playsinline 
+              preload="metadata" 
+              loop
+            >
+              <source src="assets/services/grok_web_video.mp4" type="video/mp4">
+              Il tuo browser non supporta la riproduzione video.
+            </video>
+            <figcaption class="video-credit">Video</figcaption>
           </figure>
         </div>
         <h2>Architettura chiara, decisioni guidate</h2>
@@ -121,29 +130,6 @@
           E-commerce costruiti con una base SEO avanzata: architettura delle categorie, gestione dei contenuti,
           performance e percorsi di navigazione progettati per supportare crescita organica e conversione.
         </p>
-
-        <!-- Video inserito qui in fondo, prima di Contattaci -->
-        <h2>Esempio pratico di progetto web</h2>
-        <p>Guarda come prendiamo forma un flusso reale: due persone al lavoro su un'interfaccia moderna e performante.</p>
-        <div class="split">
-          <div class="split-text">
-            <p>Il video parte automaticamente quando scorri fino a qui (senza audio per rispettare le policy dei browser).</p>
-          </div>
-          <figure class="split-media">
-            <video 
-              id="grokVideo" 
-              muted 
-              playsinline 
-              preload="metadata" 
-              loop
-            >
-              <source src="assets/services/grok_web_video.mp4" type="video/mp4">
-              Il tuo browser non supporta la riproduzione video.
-            </video>
-            <figcaption class="video-credit">Video generato con Grok di xAI</figcaption>
-          </figure>
-        </div>
-
         <h2>Contattaci</h2>
         <p>Scrivici a <a href="mailto:info@niro.digital" style="color:var(--gold);font-weight:900;text-decoration:none;">info@niro.digital</a>. Valutiamo ogni progetto con attenzione.</p>
         <div class="cta">
@@ -165,7 +151,7 @@
       const y = document.getElementById("year");
       if (y) y.textContent = new Date().getFullYear();
 
-      // Autoplay su scroll con IntersectionObserver
+      // Autoplay silenzioso quando il video entra nel viewport
       document.addEventListener('DOMContentLoaded', function() {
         const video = document.getElementById('grokVideo');
         if (!video) return;
@@ -173,7 +159,7 @@
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
-              video.play().catch(() => console.log('Autoplay bloccato'));
+              video.play().catch(() => console.log('Autoplay bloccato dal browser'));
             } else {
               video.pause();
             }
@@ -182,7 +168,6 @@
 
         observer.observe(video);
 
-        // Pausa quando la tab non è visibile
         document.addEventListener('visibilitychange', () => {
           if (document.hidden) video.pause();
         });
