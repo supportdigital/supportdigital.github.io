@@ -1,4 +1,3 @@
-<!-- /web.html -->
 <!doctype html>
 <html lang="it">
   <head>
@@ -11,51 +10,44 @@
       :root { --bg: #07192f; --gold: #d6b25c; --text: #e8eefc; --panel:#0b1220; --offset: 90px; }
       html { scroll-behavior: smooth; scroll-padding-top: var(--offset); }
       body { margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background: var(--bg); color: var(--text); }
-
       .topbar { position: sticky; top: 0; z-index: 10; background: rgba(7,25,47,.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.06); }
       .topbar-inner { max-width: 1100px; margin: 0 auto; padding: 14px 18px; display:flex; align-items:center; justify-content:space-between; gap: 14px; }
-
       .brand { display:flex; align-items:center; gap: 18px; text-decoration:none; color: inherit; }
       .logo { width: clamp(180px, 16vw, 280px); height:auto; display:block; filter: drop-shadow(0 12px 26px rgba(0,0,0,.5)); }
       .brand strong { display:block; color:white; letter-spacing:.02em; font-size: clamp(1.15rem, 1.2vw, 1.35rem); line-height:1.1; }
       .brand .sub { display:block; margin-top:4px; opacity:.85; }
-
       .nav { display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
       .nav a { text-decoration:none; font-weight:800; color: var(--gold); padding:10px 14px; border-radius:999px; background: rgba(255,255,255,.06); outline: 1px solid rgba(214,178,92,.22); }
       .nav a:hover { opacity:.95; }
       .nav a.primary { background: rgba(255,255,255,.9); color:#0b1220; outline:none; }
-
       main { max-width: 980px; margin: 0 auto; padding: 34px 18px 46px; }
       .panel { background: var(--panel); border-radius: 20px; padding: 24px; outline: 1px solid rgba(255,255,255,.06); }
       h1 { margin: 0 0 12px; color:white; font-size: clamp(1.7rem, 2.6vw, 2.2rem); }
       h2 { margin: 22px 0 10px; color:white; font-size: 1.25rem; }
       h3 { margin: 18px 0 8px; color:white; font-size: 1.05rem; }
       p { margin: 0 0 12px; line-height: 1.65; opacity: .95; }
-
-      /* Split layout: testo + immagine */
+      /* Split layout: testo + media (ora supporta anche video) */
       .split { display:grid; grid-template-columns: 1.15fr .85fr; gap: 22px; align-items:start; margin: 10px 0 22px; }
       .split.reverse { grid-template-columns: .85fr 1.15fr; }
       .split.reverse .split-media { order: -1; }
       .split-media { border-radius: 16px; overflow:hidden; outline:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); }
-      .split-media img { width:100%; height:auto; display:block; }
+      .split-media img, .split-media video { width:100%; height:auto; display:block; }
+      .video-credit { font-size: 0.85rem; opacity: 0.7; text-align: center; margin-top: 8px; }
       @media (max-width: 900px) {
         .split, .split.reverse { grid-template-columns: 1fr; }
         .split.reverse .split-media { order: 0; }
         .logo { width: 190px; }
       }
-
       .cta { margin-top: 18px; display:flex; gap: 12px; flex-wrap: wrap; }
       .btn { display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding: 12px 16px; font-weight: 900; text-decoration:none; }
       .btn.primary { background: rgba(255,255,255,.92); color:#0b1220; }
       .btn.ghost { background: rgba(255,255,255,.08); color: var(--gold); outline:1px solid rgba(214,178,92,.25); }
-
       footer { max-width: 980px; margin: 0 auto; padding: 0 18px 46px; }
       .foot { margin-top: 18px; border-radius: 16px; padding: 14px 16px; background: rgba(255,255,255,.04); outline:1px solid rgba(255,255,255,.06); display:flex; gap:10px; flex-wrap:wrap; justify-content:center; align-items:center; }
       .foot a { color: var(--gold); font-weight: 900; text-decoration:none; }
       .dot { opacity:.6; }
     </style>
   </head>
-
   <body>
     <header class="topbar">
       <div class="topbar-inner">
@@ -66,7 +58,6 @@
             <span class="sub">Servizio: Web</span>
           </div>
         </a>
-
         <nav class="nav" aria-label="Navigazione servizi">
           <a class="primary" href="./index.html">Home</a>
           <a href="./mobile.html">Mobile</a>
@@ -76,11 +67,9 @@
         </nav>
       </div>
     </header>
-
     <main>
       <article class="panel">
         <h1>Niro Digital: siti web progettati per generare risultati</h1>
-
         <div class="split">
           <div class="split-text">
             <p>
@@ -93,12 +82,10 @@
               accompagnare l’utente e portarlo a compiere un’azione chiara, senza confusione e senza attriti inutili.
             </p>
           </div>
-
           <figure class="split-media">
             <img src="./assets/services/web.webp" alt="Siti web: UX, velocità e solidità tecnica" loading="lazy" decoding="async" width="1536" height="1024" />
           </figure>
         </div>
-
         <h2>Architettura chiara, decisioni guidate</h2>
         <p>
           La progettazione parte sempre dagli obiettivi reali del progetto: contatti qualificati, richieste commerciali,
@@ -106,21 +93,18 @@
           L’utente deve capire subito dove si trova, cosa può fare e perché dovrebbe farlo.
         </p>
         <p>Un buon sito non chiede attenzione con effetti o animazioni, la ottiene perché è chiaro e funzionale.</p>
-
         <h2>UX e velocità come leve commerciali</h2>
         <p>
           Interfacce pulite, leggibili, coerenti su desktop e mobile permettono alle persone di orientarsi senza sforzo.
           Allo stesso modo, la velocità non è un dettaglio tecnico, ma un fattore che incide direttamente su conversioni,
           SEO e percezione del brand.
         </p>
-
         <h2>Una base tecnica solida e progettata per crescere</h2>
         <p>
           Un sito deve reggere nel tempo, crescere insieme al progetto e restare gestibile. Lavoriamo su codice pulito,
           scelte tecnologiche coerenti e strutture che permettono aggiornamenti e miglioramenti senza dover rifare tutto
           da capo.
         </p>
-
         <h2>Progettiamo siti web ottimizzati per i motori di ricerca: SEO e GEO</h2>
         <h3>Siti vetrina</h3>
         <p>
@@ -138,16 +122,36 @@
           performance e percorsi di navigazione progettati per supportare crescita organica e conversione.
         </p>
 
+        <!-- Video inserito qui in fondo, prima di Contattaci -->
+        <h2>Esempio pratico di progetto web</h2>
+        <p>Guarda come prendiamo forma un flusso reale: due persone al lavoro su un'interfaccia moderna e performante.</p>
+        <div class="split">
+          <div class="split-text">
+            <p>Il video parte automaticamente quando scorri fino a qui (senza audio per rispettare le policy dei browser).</p>
+          </div>
+          <figure class="split-media">
+            <video 
+              id="grokVideo" 
+              muted 
+              playsinline 
+              preload="metadata" 
+              loop
+            >
+              <source src="assets/services/grok_web_video.mp4" type="video/mp4">
+              Il tuo browser non supporta la riproduzione video.
+            </video>
+            <figcaption class="video-credit">Video generato con Grok di xAI</figcaption>
+          </figure>
+        </div>
+
         <h2>Contattaci</h2>
         <p>Scrivici a <a href="mailto:info@niro.digital" style="color:var(--gold);font-weight:900;text-decoration:none;">info@niro.digital</a>. Valutiamo ogni progetto con attenzione.</p>
-
         <div class="cta">
           <a class="btn primary" href="mailto:info@niro.digital?subject=Richiesta%20Web%20-%20niro.digital">Richiedi una consulenza</a>
           <a class="btn ghost" href="./index.html#servizi">Torna ai servizi</a>
         </div>
       </article>
     </main>
-
     <footer>
       <div class="foot">
         <span>© <span id="year"></span> niro.digital</span>
@@ -157,10 +161,32 @@
         <a href="mailto:info@niro.digital">info@niro.digital</a>
       </div>
     </footer>
-
     <script>
       const y = document.getElementById("year");
       if (y) y.textContent = new Date().getFullYear();
+
+      // Autoplay su scroll con IntersectionObserver
+      document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('grokVideo');
+        if (!video) return;
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => console.log('Autoplay bloccato'));
+            } else {
+              video.pause();
+            }
+          });
+        }, { threshold: 0.5 });
+
+        observer.observe(video);
+
+        // Pausa quando la tab non è visibile
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) video.pause();
+        });
+      });
     </script>
   </body>
 </html>
