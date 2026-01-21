@@ -1,489 +1,335 @@
-<!-- /index.html -->
 <!doctype html>
 <html lang="it">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>niro.digital</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>niro.digital</title>
 
-    <style>
-      :root {
-        --hero-min-height: 100vh;
-        --gold: #d6b25c;
-        --bg-fallback: #07192f;
-        --scroll-offset: 90px;
-      }
+  <style>
+    :root {
+      --hero-min-height: 100vh;
+      --gold: #d6b25c;
+      --bg-fallback: #07192f;
+      --scroll-offset: 90px;
+    }
 
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: var(--scroll-offset);
-      }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--scroll-offset);
+    }
 
-      body {
-        margin: 0;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        background: var(--bg-fallback);
-        color: white;
-      }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg-fallback);
+      color: white;
+    }
 
-      /* HERO */
-      .hero {
-        position: relative;
-        min-height: var(--hero-min-height);
-        overflow: hidden;
-        display: grid;
-        place-items: center;
-      }
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: var(--hero-min-height);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
 
-      #hero-vanta {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-      }
+    #hero-vanta {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
 
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(closest-side, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.75));
-        z-index: 1;
-        pointer-events: none;
-      }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(closest-side, rgba(0,0,0,.1), rgba(0,0,0,.75));
+      z-index: 1;
+      pointer-events: none;
+    }
 
-      .hero-inner {
-        position: relative;
-        z-index: 2;
-        width: min(1100px, calc(100% - 40px));
-        min-height: var(--hero-min-height);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 28px 0 48px;
-        text-align: center;
-      }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1100px, calc(100% - 40px));
+      min-height: var(--hero-min-height);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 28px 0 48px;
+      text-align: center;
+    }
 
-      .services {
-        color: var(--gold);
-        letter-spacing: 0.24em;
-        text-transform: uppercase;
-        font-weight: 800;
-        font-size: clamp(0.78rem, 1.15vw, 0.95rem);
-        text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-        user-select: none;
-      }
+    .services {
+      color: var(--gold);
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: clamp(.78rem, 1.15vw, .95rem);
+    }
 
-      .center {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-        margin: 10px 0;
-      }
+    .center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
 
-      .brand-logo {
-        width: clamp(240px, 44vw, 640px);
-        height: auto;
-        display: block;
-        filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.6));
-      }
+    .brand-logo {
+      width: clamp(240px, 44vw, 640px);
+      filter: drop-shadow(0 14px 32px rgba(0,0,0,.6));
+    }
 
-      .actions {
-        display: flex;
-        gap: 14px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
+    .actions-mini {
+      margin-top: 10px;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: 800;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn-sm {
+      padding: 8px 12px;
+      font-size: .85rem;
+    }
+
+    .btn-primary {
+      background: rgba(255,255,255,.92);
+      color: #0b1220;
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,.1);
+      color: var(--gold);
+      outline: 1px solid rgba(214,178,92,.35);
+    }
+
+    .tagline {
+      color: var(--gold);
+      letter-spacing: .22em;
+      font-weight: 750;
+      font-size: clamp(.9rem, 1.2vw, 1.1rem);
+    }
+
+    /* ✅ FIX MOBILE PULSANTI */
+    @media (max-width: 640px) {
+      .actions,
       .actions-mini {
-        margin-top: 8px;
-        gap: 10px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        border-radius: 999px;
-        padding: 12px 18px;
-        font-weight: 800;
-        cursor: pointer;
-        border: 0;
-        transition: transform 160ms ease, opacity 160ms ease;
-      }
-
-      .btn-sm {
-        padding: 9px 12px;
-        font-size: 0.88rem;
-        letter-spacing: 0.04em;
-      }
-
-      .btn:active { transform: translateY(1px); }
-      .btn:hover { opacity: 0.95; }
-
-      .btn-primary {
-        background: rgba(255, 255, 255, 0.92);
-        color: #0b1220;
-      }
-
-      .btn-ghost {
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--gold);
-        outline: 1px solid rgba(214, 178, 92, 0.35);
-        backdrop-filter: blur(6px);
-      }
-
-      .tagline {
-        margin: 0;
-        color: var(--gold);
-        font-weight: 750;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-        text-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
-      }
-
-      /* SECTIONS */
-      section {
-        padding: 72px 20px;
-        max-width: 980px;
-        margin: 0 auto;
-        color: #e8eefc;
-        scroll-margin-top: var(--scroll-offset);
-      }
-
-      .panel {
-        border-radius: 20px;
-        padding: 24px;
-        background: #0b1220;
-      }
-
-      .panel h2 { margin: 0 0 10px; }
-      .panel p { margin: 0; opacity: 0.92; line-height: 1.6; }
-
-      .section-subtitle {
-        margin: 0 0 18px;
-        color: rgba(232, 238, 252, 0.86);
-        line-height: 1.6;
-      }
-
-      /* Cards */
-      .card {
-        border-radius: 18px;
-        overflow: hidden;
-        background: rgba(255, 255, 255, 0.04);
-        outline: 1px solid rgba(255, 255, 255, 0.06);
-      }
-
-      .thumb {
-        height: 160px;
-        background: linear-gradient(135deg, rgba(214, 178, 92, 0.18), rgba(255, 255, 255, 0.03));
-      }
-
-      /* ✅ IMMAGINI NELLE CARD */
-      .thumb img {
+        flex-direction: column;
         width: 100%;
-        height: 160px;
-        object-fit: cover;
-        display: block;
       }
-
-      .card-body { padding: 16px; }
-
-      .card-title {
-        margin: 0 0 8px;
-        color: white;
-        font-size: 1.05rem;
-        font-weight: 800;
-      }
-
-      .card-desc {
-        margin: 0 0 12px;
-        opacity: 0.9;
-        line-height: 1.5;
-      }
-
-      .pill-row {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        margin-bottom: 14px;
-      }
-
-      .pill {
-        font-size: 0.78rem;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        padding: 6px 10px;
-        border-radius: 999px;
-        color: var(--gold);
-        background: rgba(214, 178, 92, 0.10);
-        outline: 1px solid rgba(214, 178, 92, 0.22);
-      }
-
-      .card-cta {
-        display: inline-flex;
-        align-items: center;
+      .btn,
+      .btn-sm {
+        width: 100%;
         justify-content: center;
-        text-decoration: none;
-        padding: 10px 14px;
-        border-radius: 999px;
-        font-weight: 800;
-        color: var(--gold);
-        background: rgba(255, 255, 255, 0.06);
-        outline: 1px solid rgba(214, 178, 92, 0.22);
       }
+    }
 
-      .card-cta:hover { opacity: 0.92; }
+    section {
+      padding: 72px 20px;
+      max-width: 980px;
+      margin: 0 auto;
+      color: #e8eefc;
+    }
 
-      /* Services grid */
-      .services-grid {
-        margin-top: 18px;
-        display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
+    .panel {
+      background: #0b1220;
+      border-radius: 20px;
+      padding: 24px;
+    }
 
-      @media (max-width: 1024px) {
-        .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      }
+    .section-subtitle {
+      opacity: .85;
+      margin-bottom: 18px;
+    }
 
-      @media (max-width: 640px) {
-        .services-grid { grid-template-columns: 1fr; }
-      }
+    .card {
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      overflow: hidden;
+      outline: 1px solid rgba(255,255,255,.06);
+    }
 
-      /* Portfolio grid */
-      .portfolio-grid {
-        margin-top: 18px;
-        display: grid;
-        gap: 16px;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
+    .thumb img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
 
-      @media (max-width: 900px) {
-        .portfolio-grid { grid-template-columns: 1fr; }
-      }
+    .card-body {
+      padding: 16px;
+    }
 
-      /* Footer */
-      .site-footer {
-        padding: 26px 20px 46px;
-        max-width: 980px;
-        margin: 0 auto;
-        color: #e8eefc;
-      }
+    .card-title {
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
 
-      .footer-inner {
-        border-radius: 16px;
-        padding: 16px 18px;
-        background: rgba(255, 255, 255, 0.04);
-        outline: 1px solid rgba(255, 255, 255, 0.06);
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
+    .card-desc {
+      opacity: .9;
+      margin-bottom: 10px;
+    }
 
-      .footer-inner a {
-        color: var(--gold);
-        text-decoration: none;
-        font-weight: 800;
-      }
+    .pill-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
 
-      .footer-inner a:hover {
-        opacity: 0.9;
-        text-decoration: underline;
-      }
+    .pill {
+      font-size: .75rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(214,178,92,.1);
+      outline: 1px solid rgba(214,178,92,.22);
+    }
 
-      .dot { opacity: 0.55; }
+    .card-cta {
+      display: inline-flex;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: var(--gold);
+      text-decoration: none;
+      background: rgba(255,255,255,.06);
+      outline: 1px solid rgba(214,178,92,.22);
+    }
 
-      .made-by { opacity: 0.9; }
-      .made-by a { color: var(--gold); font-weight: 800; text-decoration: none; }
-      .made-by a:hover { text-decoration: underline; opacity: 0.95; }
-    </style>
-  </head>
+    .services-grid,
+    .portfolio-grid {
+      display: grid;
+      gap: 16px;
+    }
 
-  <body>
-    <header class="hero">
-      <div id="hero-vanta" aria-hidden="true"></div>
+    .services-grid {
+      grid-template-columns: repeat(4,1fr);
+    }
 
-      <div class="hero-inner">
-        <div class="services">WEB - MOBILE - SEO - SAAS</div>
+    .portfolio-grid {
+      grid-template-columns: repeat(2,1fr);
+    }
 
-        <div class="center">
-          <img class="brand-logo" src="./logo-removebg-preview.png" alt="niro.digital" decoding="async" />
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
 
-          <div class="actions">
-            <a class="btn btn-primary" href="#servizi">Servizi</a>
-            <a class="btn btn-ghost" href="#portfolio">Portfolio</a>
-            <a class="btn btn-ghost" href="#contatti">Contatti</a>
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      text-align: center;
+      opacity: .9;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="hero">
+  <div id="hero-vanta"></div>
+
+  <div class="hero-inner">
+    <div class="services">WEB · MOBILE · SEO · SAAS</div>
+
+    <div class="center">
+      <img class="brand-logo" src="./logo-removebg-preview.png" alt="niro.digital" />
+
+      <div class="actions">
+        <a class="btn btn-primary" href="#servizi">Servizi</a>
+        <a class="btn btn-ghost" href="#portfolio">Portfolio</a>
+        <a class="btn btn-ghost" href="#contatti">Contatti</a>
+      </div>
+
+      <div class="actions actions-mini">
+        <a class="btn btn-ghost btn-sm" href="./web.html">Web</a>
+        <a class="btn btn-ghost btn-sm" href="./mobile.html">Mobile</a>
+        <a class="btn btn-ghost btn-sm" href="./seo.html">SEO</a>
+        <a class="btn btn-ghost btn-sm" href="./saas.html">SaaS</a>
+      </div>
+    </div>
+
+    <p class="tagline">HIGH END · DIGITAL ENGINEERING</p>
+  </div>
+</header>
+
+<section id="portfolio">
+  <div class="panel">
+    <h2>Portfolio</h2>
+    <p class="section-subtitle">Progetti SEO e web costruiti nel tempo</p>
+
+    <div class="portfolio-grid">
+
+      <article class="card">
+        <div class="thumb">
+          <img src="./assets/portfolio/marcheggiani.webp" alt="">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Chirurgia ortopedica & SEO</h3>
+          <p class="card-desc">Da 800 a 15.000+ visite mensili.</p>
+          <div class="pill-row">
+            <span class="pill">SEO</span>
+            <span class="pill">MEDICAL</span>
           </div>
+          <a class="card-cta" href="https://marcheggianimuccioli.it/it/" target="_blank">Vedi progetto</a>
+        </div>
+      </article>
 
-          <div class="actions actions-mini" aria-label="Dettagli Servizi">
-            <a class="btn btn-ghost btn-sm" href="./web.html" target="_blank" rel="noopener">Web</a>
-            <a class="btn btn-ghost btn-sm" href="./mobile.html" target="_blank" rel="noopener">Mobile</a>
-            <a class="btn btn-ghost btn-sm" href="./seo.html" target="_blank" rel="noopener">SEO</a>
-            <a class="btn btn-ghost btn-sm" href="./saas.html" target="_blank" rel="noopener">SaaS</a>
+      <article class="card">
+        <div class="thumb">
+          <img src="./assets/portfolio/zorzi.webp" alt="">
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Sito & SEO da zero</h3>
+          <p class="card-desc">Piattaforma autorevole in ambito medico.</p>
+          <div class="pill-row">
+            <span class="pill">WEB</span>
+            <span class="pill">SEO</span>
           </div>
+          <a class="card-cta" href="https://www.claudio-zorzi.it/" target="_blank">Vedi progetto</a>
         </div>
+      </article>
 
-        <p class="tagline">HIGH END - DIGITAL ENGINEERING</p>
-      </div>
-    </header>
+    </div>
+  </div>
+</section>
 
-    <section id="servizi">
-      <div class="panel">
-        <h2>Servizi</h2>
-        <p class="section-subtitle">Web, SEO e prodotti digitali</p>
+<section id="contatti">
+  <div class="panel">
+    <h2>Parliamone</h2>
+    <p>Scrivi a <a href="mailto:info@niro.digital" style="color:var(--gold)">info@niro.digital</a></p>
+  </div>
+</section>
 
-        <div class="services-grid">
-          <article class="card">
-            <div class="thumb" aria-hidden="true">
-              <img src="./assets/cards/web_card.webp" alt="Servizio Web" loading="lazy" decoding="async" />
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Web</h3>
-              <p class="card-desc">Siti web progettati per generare risultati.</p>
-              <div class="pill-row"><span class="pill">UI</span><span class="pill">SPEED</span></div>
-              <a class="card-cta" href="./web.html" target="_blank" rel="noopener">Approfondisci</a>
-            </div>
-          </article>
+<footer>
+  © <span id="year"></span> niro.digital · Made by niro.digital
+</footer>
 
-          <article class="card">
-            <div class="thumb" aria-hidden="true">
-              <img src="./assets/cards/mobile_card.webp" alt="Servizio Mobile" loading="lazy" decoding="async" />
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Mobile</h3>
-              <p class="card-desc">Esperienze mobile-first reali.</p>
-              <div class="pill-row"><span class="pill">UX</span><span class="pill">APP</span></div>
-              <a class="card-cta" href="./mobile.html" target="_blank" rel="noopener">Approfondisci</a>
-            </div>
-          </article>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
-          <article class="card">
-            <div class="thumb" aria-hidden="true">
-              <img src="./assets/cards/seo_card.webp" alt="Servizio SEO" loading="lazy" decoding="async" />
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">SEO</h3>
-              <p class="card-desc">Crescita organica strutturata.</p>
-              <div class="pill-row"><span class="pill">TECH</span><span class="pill">GROWTH</span></div>
-              <a class="card-cta" href="./seo.html" target="_blank" rel="noopener">Approfondisci</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" aria-hidden="true">
-              <img src="./assets/cards/saas_card.webp" alt="Servizio SaaS" loading="lazy" decoding="async" />
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">SaaS</h3>
-              <p class="card-desc">Prodotti pronti a diventare business.</p>
-              <div class="pill-row"><span class="pill">MVP</span><span class="pill">B2B</span></div>
-              <a class="card-cta" href="./saas.html" target="_blank" rel="noopener">Approfondisci</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio">
-      <div class="panel">
-        <h2>Portfolio</h2>
-        <p>Qui metteremo 3–6 lavori con screenshot + link.</p>
-
-        <div class="portfolio-grid">
-          <article class="card">
-            <div class="thumb" aria-hidden="true"></div>
-            <div class="card-body">
-              <h3 class="card-title">Progetto 01</h3>
-              <p class="card-desc">Landing / sito vetrina (placeholder).</p>
-              <div class="pill-row"><span class="pill">Web</span><span class="pill">UI</span></div>
-              <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">In arrivo</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" aria-hidden="true"></div>
-            <div class="card-body">
-              <h3 class="card-title">Progetto 02</h3>
-              <p class="card-desc">SEO / performance (placeholder).</p>
-              <div class="pill-row"><span class="pill">SEO</span><span class="pill">Speed</span></div>
-              <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">In arrivo</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="thumb" aria-hidden="true"></div>
-            <div class="card-body">
-              <h3 class="card-title">Progetto 03</h3>
-              <p class="card-desc">SaaS / app (placeholder).</p>
-              <div class="pill-row"><span class="pill">SaaS</span><span class="pill">App</span></div>
-              <a class="card-cta" href="#" aria-disabled="true" onclick="return false;">In arrivo</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contatti">
-      <div class="panel">
-        <h2>Parliamone.</h2>
-        <p>
-          Scrivi a
-          <a href="mailto:info@niro.digital" style="color: var(--gold); text-decoration: none; font-weight: 800;">info@niro.digital</a>
-        </p>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <span>© <span id="year"></span> niro.digital</span>
-        <span class="dot">•</span>
-        <a href="mailto:info@niro.digital">info@niro.digital</a>
-        <span class="dot">•</span>
-        <span class="made-by">Made by <a href="https://niro.digital" rel="noopener">niro.digital</a></span>
-      </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
-
-    <script>
-      window.addEventListener("load", () => {
-        const yearEl = document.getElementById("year");
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-        const el = document.querySelector("#hero-vanta");
-        if (!el || !window.THREE || !window.VANTA?.BIRDS) return;
-
-        window.__heroVanta?.destroy?.();
-        window.__heroVanta = window.VANTA.BIRDS({
-          el,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          backgroundColor: 0x07192f,
-          backgroundAlpha: 1,
-          color1: 0xff0000,
-          color2: 0x00d1ff,
-          colorMode: "varianceGradient",
-          quantity: 5,
-          birdSize: 1,
-          wingSpan: 30,
-          speedLimit: 5,
-          separation: 20,
-          alignment: 20,
-          cohesion: 20,
-        });
-      });
-    </script>
-  </body>
+</body>
 </html>
